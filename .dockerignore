@@ -1,0 +1,10 @@
+config/*
+!config/default*
+!config/custom-environment-variables*
+node_modules
+build
+tmp
+.vscode
+.editorconfig
+.eslintrc
+README.md
