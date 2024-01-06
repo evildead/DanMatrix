@@ -1,15 +1,7 @@
 /* eslint-disable security/detect-object-injection */
 import _ from 'lodash';
 
-import { DanMatrixRowsIterator, DanMatrixColumnsIterator } from '.';
-
-export interface RowsColsFilledWithValType<T> {
-  rows: number;
-  columns: number;
-  val: T;
-}
-
-export type DanMatrixConstructorType<T> = RowsColsFilledWithValType<T> | Array<Array<T>>;
+import { DanMatrixConstructorType, DanMatrixRowsIterator, DanMatrixColumnsIterator } from '.';
 
 export class DanMatrix<T> {
   private _2dvector: Array<Array<T>>;
@@ -108,27 +100,24 @@ export class DanMatrix<T> {
     return this.set(coords[0], coords[1], val);
   }
 
-  public addRow(row: Array<T>): void {
+  public addRow(row: Array<T>): boolean {
     if (!Array.isArray(row) || row.length < 1) {
       throw new Error('Wrong input');
     }
     if (this._2dvector.length > 0 && row.length !== this._2dvector[0].length) {
-      throw new Error(
-        `Input row's length ${row.length} differs from matrix's num of columns ${this._2dvector[0].length}`
-      );
+      return false;
     }
     this._2dvector.push(_.cloneDeep(row));
+    return true;
   }
 
-  public addColumn(column: Array<T>): void {
+  public addColumn(column: Array<T>): boolean {
     if (!Array.isArray(column) || column.length < 1) {
       throw new Error('Wrong input');
     }
     if (this._2dvector.length > 0) {
       if (column.length !== this._2dvector.length) {
-        throw new Error(
-          `Input column's length ${column.length} differs from matrix's num of rows ${this._2dvector.length}`
-        );
+        return false;
       }
       for (let rowIndex = 0; rowIndex < this._2dvector.length; rowIndex++) {
         const row = this._2dvector[rowIndex];
@@ -139,6 +128,7 @@ export class DanMatrix<T> {
         this._2dvector.push([columnElement]);
       }
     }
+    return true;
   }
 
   public lookForValue(val: T): Array<string> {
@@ -165,22 +155,21 @@ export class DanMatrix<T> {
     return _.cloneDeep(this._2dvector[rowIndex]);
   }
 
-  public insertRowAt(rowIndex: number, row: Array<T>): void {
+  public insertRowAt(rowIndex: number, row: Array<T>): boolean {
     if (!_.isInteger(rowIndex) || rowIndex < 0 || !Array.isArray(row) || row.length < 1) {
       throw new Error('Wrong input');
     }
     if (rowIndex > this._2dvector.length) {
-      throw new Error(`Cannot insert row at index ${rowIndex}`);
+      return false;
     }
     if (rowIndex === this._2dvector.length) {
       return this.addRow(row);
     }
     if (row.length !== this._2dvector[0].length) {
-      throw new Error(
-        `Input row's length ${row.length}, differs from matrix's num of columns ${this._2dvector[0].length}`
-      );
+      return false;
     }
     this._2dvector.splice(rowIndex, 0, _.cloneDeep(row));
+    return true;
   }
 
   public getColumnAt(columnIndex: number): Array<T> | undefined {
@@ -200,18 +189,16 @@ export class DanMatrix<T> {
     return columnToReturn;
   }
 
-  public insertColumnAt(columnIndex: number, column: Array<T>): void {
+  public insertColumnAt(columnIndex: number, column: Array<T>): boolean {
     if (!_.isInteger(columnIndex) || columnIndex < 0 || !Array.isArray(column) || column.length < 1) {
       throw new Error('Wrong input');
     }
     if (this._2dvector.length > 0) {
       if (column.length !== this._2dvector.length) {
-        throw new Error(
-          `Input column's length ${column.length}, differs from matrix's num of rows ${this._2dvector.length}`
-        );
+        return false;
       }
       if (columnIndex > this._2dvector[0].length) {
-        throw new Error(`Cannot insert column at index ${columnIndex}`);
+        return false;
       } else if (columnIndex === this._2dvector[0].length) {
         return this.addColumn(column);
       } else {
@@ -224,32 +211,49 @@ export class DanMatrix<T> {
       if (columnIndex === 0) {
         return this.addColumn(column);
       } else {
-        throw new Error(`Cannot insert column at index ${columnIndex}`);
+        return false;
       }
     }
+    return true;
   }
 
-  public removeRowAt(rowIndex: number): void {
+  /**
+   * Remove matrix row at index 'rowIndex'
+   * @param {number} rowIndex the index of the row to be removed. If it's not an
+   * integer number or if it's less than zero, an exception "Error('Wrong input')" is thrown
+   * @returns true if the row removal was successful, otherwise it returns false
+   * @throws exception "Error('Wrong input')" when any parameter in input is wrong
+   */
+  public removeRowAt(rowIndex: number): boolean {
     if (!_.isInteger(rowIndex) || rowIndex < 0) {
       throw new Error('Wrong input');
     }
     if (rowIndex >= this._2dvector.length) {
-      throw new Error(`Cannot remove row at index ${rowIndex}`);
+      return false;
     }
     this._2dvector.splice(rowIndex, 1);
+    return true;
   }
 
-  public removeColumnAt(columnIndex: number): void {
+  /**
+   * Remove matrix column at index 'columnIndex'
+   * @param {number} columnIndex the index of the column to be removed. If it's not an
+   * integer number or if it's less than zero, an exception "Error('Wrong input')" is thrown
+   * @returns true if the column removal was successful, otherwise it returns false
+   * @throws exception "Error('Wrong input')" when any parameter in input is wrong
+   */
+  public removeColumnAt(columnIndex: number): boolean {
     if (!_.isInteger(columnIndex) || columnIndex < 0) {
       throw new Error('Wrong input');
     }
     if (this._2dvector.length < 1 || columnIndex >= this._2dvector[0].length) {
-      throw new Error(`Cannot remove column at index ${columnIndex}`);
+      return false;
     }
     for (let rowIndex = 0; rowIndex < this._2dvector.length; rowIndex++) {
       const row = this._2dvector[rowIndex];
       row.splice(columnIndex, 1);
     }
+    return true;
   }
 
   /**
@@ -266,5 +270,59 @@ export class DanMatrix<T> {
    */
   public getColumnsIterator(): DanMatrixColumnsIterator<T> {
     return new DanMatrixColumnsIterator<T>(this);
+  }
+
+  /**
+   * Replace matrix row at index 'rowIndex'
+   * @param {number} rowIndex the index of the row to be replaced. If it's not an
+   * integer number or if it's less than zero, an exception "Error('Wrong input')" is thrown
+   * @param {Array<T>} row the array of values which must replace the existing row.
+   * If it's not an array or if the array is empty, an exception "Error('Wrong input')" is thrown
+   * @returns true if the row replacement was successful, otherwise it returns false
+   * @throws exception "Error('Wrong input')" when any parameter in input is wrong
+   */
+  public replaceRowAt(rowIndex: number, row: Array<T>): boolean {
+    if (!_.isInteger(rowIndex) || rowIndex < 0 || !Array.isArray(row) || row.length < 1) {
+      throw new Error('Wrong input');
+    }
+    if (rowIndex >= this._2dvector.length) {
+      return false;
+    }
+    const currentRow = this._2dvector[rowIndex];
+    if (row.length !== currentRow.length) {
+      return false;
+    }
+    for (let index = 0; index < row.length; index++) {
+      currentRow[index] = row[index];
+    }
+    return true;
+  }
+
+  /**
+   * Replace matrix column at index 'columnIndex'
+   * @param {number} columnIndex the index of the column to be replaced. If it's not an
+   * integer number or if it's less than zero, an exception "Error('Wrong input')" is thrown
+   * @param {Array<T>} column the array of values which must replace the existing column.
+   * If it's not an array or if the array is empty, an exception "Error('Wrong input')" is thrown
+   * @returns true if the column replacement was successful, otherwise it returns false
+   * @throws exception "Error('Wrong input')" when any parameter in input is wrong
+   */
+  public replaceColumnAt(columnIndex: number, column: Array<T>): boolean {
+    if (!_.isInteger(columnIndex) || columnIndex < 0 || !Array.isArray(column) || column.length < 1) {
+      throw new Error('Wrong input');
+    }
+    if (this._2dvector.length < 1) {
+      return false;
+    }
+    if (column.length !== this._2dvector.length) {
+      return false;
+    }
+    if (columnIndex >= this._2dvector[0].length) {
+      return false;
+    }
+    for (let rowIndex = 0; rowIndex < this._2dvector.length; rowIndex++) {
+      this._2dvector[rowIndex][columnIndex] = column[rowIndex];
+    }
+    return true;
   }
 }

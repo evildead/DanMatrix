@@ -14,3 +14,11 @@ export interface MatrixIterator<T> {
   // Rewind the Iterator to the first element.
   rewind(): void;
 }
+
+export interface RowsColsFilledWithValType<T> {
+  rows: number;
+  columns: number;
+  val: T;
+}
+
+export type DanMatrixConstructorType<T> = RowsColsFilledWithValType<T> | Array<Array<T>>;

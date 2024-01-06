@@ -198,7 +198,7 @@ describe('Matrix', () => {
         [244, 68563, 1]
       ]);
       myMatrix.addRow([344, 65, 87, 98, 12]);
-    }).toThrow();
+    }).not.toThrow();
   });
 
   it('check addColumn', async () => {
@@ -252,7 +252,7 @@ describe('Matrix', () => {
         [244, 68563, 1]
       ]);
       myMatrix.addColumn([344]);
-    }).toThrow();
+    }).not.toThrow();
   });
 
   it('check lookForValue', async () => {
@@ -343,7 +343,7 @@ describe('Matrix', () => {
         [244, 68563, 1]
       ]);
       myMatrix.insertRowAt(1, [344, 65, 87, 98, 12]);
-    }).toThrow();
+    }).not.toThrow();
 
     expect(() => {
       const myMatrix = new DanMatrix<number>();
@@ -414,7 +414,7 @@ describe('Matrix', () => {
         [244, 68563, 1]
       ]);
       myMatrix.insertColumnAt(1, [344, 65, 87, 98, 12]);
-    }).toThrow();
+    }).not.toThrow();
 
     expect(() => {
       const myMatrix = new DanMatrix<number>();
@@ -467,7 +467,7 @@ describe('Matrix', () => {
         [24, 6863, 11],
         [2, 63, 411]
       ]);
-      myMatrix.removeColumnAt(5);
+      myMatrix.removeColumnAt(-5);
     }).toThrow();
 
     expect(() => {
@@ -476,8 +476,37 @@ describe('Matrix', () => {
         [763, 23, 87],
         [244, 68563, 1]
       ]);
-      myMatrix.removeRowAt(4);
+      myMatrix.removeRowAt(4.49786);
     }).toThrow();
+  });
+
+  it('check replaceRowAt and replaceColumnAt', async () => {
+    const myMatrix01 = new DanMatrix<string>([
+      ['a', 'aa', 'aaa', 'aaaa', 'aaaaa', 'aaaaaa'],
+      ['b', 'bb', 'bbb', 'bbbb', 'bbbbb', 'bbbbbb'],
+      ['c', 'cc', 'ccc', 'cccc', 'ccccc', 'cccccc'],
+      ['d', 'dd', 'ddd', 'dddd', 'ddddd', 'dddddd'],
+      ['e', 'ee', 'eee', 'eeee', 'eeeee', 'eeeeee'],
+      ['f', 'ff', 'fff', 'ffff', 'fffff', 'ffffff']
+    ]);
+    const columnToReplace01 = ['A', 'B', 'C', 'D', 'E', 'F'];
+    myMatrix01.replaceColumnAt(3, columnToReplace01);
+    expect(myMatrix01.getColumnAt(3)).toEqual(columnToReplace01);
+    console.log(myMatrix01.getMatrixString());
+
+    const rowToReplace01 = ['X', 'XX', 'XXX', 'XXXX', 'XXXXX', 'XXXXXX'];
+    myMatrix01.replaceRowAt(5, rowToReplace01);
+    expect(myMatrix01.getRowAt(5)).toEqual(rowToReplace01);
+    console.log(myMatrix01.getMatrixString());
+
+    expect(() => {
+      const myMatrix = new DanMatrix<number>();
+      myMatrix.setupMatrix([
+        [763, 23, 87],
+        [244, 68563, 1]
+      ]);
+      myMatrix.replaceColumnAt(6, [4, 5, 6]);
+    }).not.toThrow();
   });
 
   it('check clone', async () => {
