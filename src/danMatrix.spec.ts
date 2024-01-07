@@ -114,6 +114,7 @@ describe('Matrix', () => {
     expect(myMatrix01.get(1, 2)).toBe('@');
     expect(myMatrix01.getCoord('0-1')).toBe('@');
     expect(myMatrix01.get(2, 2)).toBeUndefined();
+    expect(myMatrix01.getCoord('0;')).toBeUndefined();
 
     const myMatrix02 = new DanMatrix<number>([
       [763, 23, 87, 123],
@@ -124,6 +125,7 @@ describe('Matrix', () => {
     expect(myMatrix02.get(1, 2)).toBe(1);
     expect(myMatrix02.getCoord('0-1')).toBe(23);
     expect(myMatrix02.get(5, 9)).toBeUndefined();
+    expect(myMatrix02.getCoord('01')).toBeUndefined();
 
     const myMatrix03 = new DanMatrix<string>([
       ['a', 'aa', 'aaa', 'aaaa', 'aaaaa', 'aaaaaa'],
@@ -139,6 +141,9 @@ describe('Matrix', () => {
     expect(myMatrix03.getCoord('2-5')).toBe('cccccc');
     expect(myMatrix03.setCoord('2-5', 'CCCCCC')).toBe('CCCCCC');
     expect(myMatrix03.get(2, 5)).toBe('CCCCCC');
+    expect(myMatrix03.getCoord(25 as any)).toBeUndefined();
+    expect(myMatrix03.setCoord('2;', 'XXXXX')).toBeUndefined();
+    expect(myMatrix03.setCoord(2 as any, 'XXXX')).toBeUndefined();
   });
 
   it('check addRow', async () => {
@@ -199,6 +204,15 @@ describe('Matrix', () => {
       ]);
       myMatrix.addRow([344, 65, 87, 98, 12]);
     }).not.toThrow();
+
+    expect(() => {
+      const myMatrix = new DanMatrix<number>();
+      myMatrix.setupMatrix([
+        [763, 23, 87],
+        [244, 68563, 1]
+      ]);
+      myMatrix.addRow([]);
+    }).toThrow();
   });
 
   it('check addColumn', async () => {
@@ -245,6 +259,10 @@ describe('Matrix', () => {
     expect(myMatrix03.getCoord('2-6')).toBe('ccccccc');
     console.log(myMatrix03.getMatrixString());
 
+    const myMatrix04 = new DanMatrix<string>();
+    myMatrix04.addColumn(['001', '002', '003', '004']);
+    console.log(myMatrix04.getMatrixString(5));
+
     expect(() => {
       const myMatrix = new DanMatrix<number>();
       myMatrix.setupMatrix([
@@ -253,6 +271,15 @@ describe('Matrix', () => {
       ]);
       myMatrix.addColumn([344]);
     }).not.toThrow();
+
+    expect(() => {
+      const myMatrix = new DanMatrix<number>();
+      myMatrix.setupMatrix([
+        [763, 23, 87],
+        [244, 68563, 1]
+      ]);
+      myMatrix.addColumn('' as any);
+    }).toThrow();
   });
 
   it('check lookForValue', async () => {
@@ -327,13 +354,20 @@ describe('Matrix', () => {
     expect(myMatrix03.rowsNum()).toBe(3);
     expect(myMatrix03.colsNum()).toBe(6);
     const rowToInsert03 = ['d', 'dd', 'ddd', 'dddd', 'ddddd', 'dddddd'];
+    const rowToInsert0302 = ['lrow', 'lrow.', 'lrow..', 'lrow...', 'lrow....', 'lrow.....'];
     myMatrix03.insertRowAt(2, rowToInsert03);
     expect(myMatrix03.rowsNum()).toBe(4);
     expect(myMatrix03.colsNum()).toBe(6);
     expect(myMatrix03.getRowAt(2)).toEqual(rowToInsert03);
+    expect(myMatrix03.getRowAt(4)).toBeUndefined();
+    expect(myMatrix03.getRowAt(30)).toBeUndefined();
     expect(myMatrix03.get(1, 2)).toBe('bbb');
     expect(myMatrix03.getCoord('2-4')).toBe('ddddd');
     expect(myMatrix03.get(5, 9)).toBeUndefined();
+    expect(myMatrix03.insertRowAt(20, rowToInsert03)).toBe(false);
+    expect(myMatrix03.insertRowAt(1, ['X', 'XX', 'XXX'])).toBe(false);
+    myMatrix03.insertRowAt(4, rowToInsert0302);
+    expect(myMatrix03.getRowAt(4)).toEqual(rowToInsert0302);
     console.log(myMatrix03.getMatrixString());
 
     expect(() => {
@@ -342,8 +376,8 @@ describe('Matrix', () => {
         [763, 23, 87],
         [244, 68563, 1]
       ]);
-      myMatrix.insertRowAt(1, [344, 65, 87, 98, 12]);
-    }).not.toThrow();
+      myMatrix.insertRowAt(-1, [344, 65, 87, 98, 12]);
+    }).toThrow();
 
     expect(() => {
       const myMatrix = new DanMatrix<number>();
@@ -390,6 +424,8 @@ describe('Matrix', () => {
     expect(myMatrix02.get(2, 3)).toBeUndefined();
     console.log(myMatrix02.getMatrixString(8));
 
+    expect(myMatrix02.insertColumnAt(1, [6])).toBe(false);
+
     const myMatrix03 = new DanMatrix<string>([
       ['a', 'aa', 'aaa', 'aaaa', 'aaaaa', 'aaaaaa'],
       ['b', 'bb', 'bbb', 'bbbb', 'bbbbb', 'bbbbbb'],
@@ -405,7 +441,14 @@ describe('Matrix', () => {
     expect(myMatrix03.get(1, 6)).toBe('BBBBBBB');
     expect(myMatrix03.getCoord('2-6')).toBe('CCCCCCC');
     expect(myMatrix03.get(5, 9)).toBeUndefined();
+    expect(myMatrix03.getColumnAt(9)).toBeUndefined();
+    expect(myMatrix03.insertColumnAt(20, columnToInsert03)).toBe(false);
     console.log(myMatrix03.getMatrixString());
+
+    const myMatrix04 = new DanMatrix<number>();
+    expect(myMatrix04.insertColumnAt(1, [1, 2, 4])).toBe(false);
+    expect(myMatrix04.insertColumnAt(0, [7, 77, 777])).toBe(true);
+    console.log(myMatrix04.getMatrixString(5));
 
     expect(() => {
       const myMatrix = new DanMatrix<number>();
@@ -413,8 +456,8 @@ describe('Matrix', () => {
         [763, 23, 87],
         [244, 68563, 1]
       ]);
-      myMatrix.insertColumnAt(1, [344, 65, 87, 98, 12]);
-    }).not.toThrow();
+      myMatrix.insertColumnAt(-21, [344, 65, 87, 98, 12]);
+    }).toThrow();
 
     expect(() => {
       const myMatrix = new DanMatrix<number>();
@@ -460,6 +503,9 @@ describe('Matrix', () => {
     expect(myMatrix01.colsNum()).toBe(2);
     console.log(myMatrix01.getMatrixString());
 
+    expect(myMatrix01.removeRowAt(8)).toBe(false);
+    expect(myMatrix01.removeColumnAt(76)).toBe(false);
+
     expect(() => {
       const myMatrix = new DanMatrix<number>();
       myMatrix.setupMatrix([
@@ -499,14 +545,30 @@ describe('Matrix', () => {
     expect(myMatrix01.getRowAt(5)).toEqual(rowToReplace01);
     console.log(myMatrix01.getMatrixString());
 
+    expect(myMatrix01.replaceRowAt(6, rowToReplace01)).toBe(false);
+    expect(myMatrix01.replaceRowAt(60, rowToReplace01)).toBe(false);
+    expect(myMatrix01.replaceColumnAt(6, columnToReplace01)).toBe(false);
+    expect(myMatrix01.replaceColumnAt(61, columnToReplace01)).toBe(false);
+    expect(myMatrix01.replaceRowAt(4, ['black'])).toBe(false);
+    expect(myMatrix01.replaceColumnAt(4, ['yellow', 'dark green'])).toBe(false);
+
     expect(() => {
       const myMatrix = new DanMatrix<number>();
       myMatrix.setupMatrix([
         [763, 23, 87],
         [244, 68563, 1]
       ]);
-      myMatrix.replaceColumnAt(6, [4, 5, 6]);
-    }).not.toThrow();
+      myMatrix.replaceColumnAt(-6, [4, 5, 6]);
+    }).toThrow();
+
+    expect(() => {
+      const myMatrix = new DanMatrix<number>();
+      myMatrix.setupMatrix([
+        [763, 23, 87],
+        [244, 68563, 1]
+      ]);
+      myMatrix.replaceRowAt(6, null as any);
+    }).toThrow();
   });
 
   it('check clone', async () => {

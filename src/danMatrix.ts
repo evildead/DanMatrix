@@ -85,6 +85,9 @@ export class DanMatrix<T> {
   }
 
   public getCoord(coord: string): T | undefined {
+    if (!_.isString(coord)) {
+      return undefined;
+    }
     const coords = coord.split('-').map((elem: string) => Number(elem.trim()));
     if (coords.length < 2) {
       return undefined;
@@ -93,6 +96,9 @@ export class DanMatrix<T> {
   }
 
   public setCoord(coord: string, val: T): T | undefined {
+    if (!_.isString(coord)) {
+      return undefined;
+    }
     const coords = coord.split('-').map((elem: string) => Number(elem.trim()));
     if (coords.length < 2) {
       return undefined;
@@ -176,10 +182,7 @@ export class DanMatrix<T> {
     if (!_.isInteger(columnIndex) || columnIndex < 0) {
       throw new Error('Wrong input');
     }
-    if (this._2dvector.length < 1) {
-      return undefined;
-    }
-    if (columnIndex >= this._2dvector[0].length) {
+    if (columnIndex >= this.colsNum()) {
       return undefined;
     }
     const columnToReturn: Array<T> = [];
@@ -257,22 +260,6 @@ export class DanMatrix<T> {
   }
 
   /**
-   * Get matrix rows iterator
-   * @returns {DanMatrixRowsIterator<T>} the matrix rows iterator
-   */
-  public getRowsIterator(): DanMatrixRowsIterator<T> {
-    return new DanMatrixRowsIterator<T>(this);
-  }
-
-  /**
-   * Get matrix columns iterator
-   * @returns {DanMatrixColumnsIterator<T>} the matrix columns iterator
-   */
-  public getColumnsIterator(): DanMatrixColumnsIterator<T> {
-    return new DanMatrixColumnsIterator<T>(this);
-  }
-
-  /**
    * Replace matrix row at index 'rowIndex'
    * @param {number} rowIndex the index of the row to be replaced. If it's not an
    * integer number or if it's less than zero, an exception "Error('Wrong input')" is thrown
@@ -311,18 +298,31 @@ export class DanMatrix<T> {
     if (!_.isInteger(columnIndex) || columnIndex < 0 || !Array.isArray(column) || column.length < 1) {
       throw new Error('Wrong input');
     }
-    if (this._2dvector.length < 1) {
+    if (columnIndex >= this.colsNum()) {
       return false;
     }
     if (column.length !== this._2dvector.length) {
-      return false;
-    }
-    if (columnIndex >= this._2dvector[0].length) {
       return false;
     }
     for (let rowIndex = 0; rowIndex < this._2dvector.length; rowIndex++) {
       this._2dvector[rowIndex][columnIndex] = column[rowIndex];
     }
     return true;
+  }
+
+  /**
+   * Get matrix rows iterator
+   * @returns {DanMatrixRowsIterator<T>} the matrix rows iterator
+   */
+  public getRowsIterator(): DanMatrixRowsIterator<T> {
+    return new DanMatrixRowsIterator<T>(this);
+  }
+
+  /**
+   * Get matrix columns iterator
+   * @returns {DanMatrixColumnsIterator<T>} the matrix columns iterator
+   */
+  public getColumnsIterator(): DanMatrixColumnsIterator<T> {
+    return new DanMatrixColumnsIterator<T>(this);
   }
 }

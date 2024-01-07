@@ -14,6 +14,9 @@ export class DanMatrixRowsIterator<T> implements MatrixIterator<Array<T>>, Itera
    * @param {DanMatrix<T>} matrix the DanMatrix object
    */
   public constructor(matrix: DanMatrix<T>) {
+    if (!(matrix instanceof DanMatrix)) {
+      throw new Error('Wrong input');
+    }
     this._matrix = matrix;
     this._initFields();
   }
