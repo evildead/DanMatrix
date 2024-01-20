@@ -5,6 +5,8 @@ DanMatrix is a data structure able to handle and manipulate 2D-vectors
 ## How to use it
 
 ```ts
+import { DanMatrix } from 'danmatrix';
+
 const matrix = new DanMatrix<string>([
   ['a', 'aa', 'aaa', 'aaaa', 'aaaaa', 'aaaaaa'],
   ['b', 'bb', 'bbb', 'bbbb', 'bbbbb', 'bbbbbb'],
@@ -23,5 +25,19 @@ console.log(matrix.getMatrixString());
 
 ## Code Documentation
 
-- [Code Documentation (Markdown)](./docs/code-documentation-md/modules.md)
-- [Code Documentation (Html)](./docs/code-documentation-html/modules.html)
+- [Code Documentation (Markdown)](./docs-md/modules.md)
+- [Code Documentation (Html)](https://evildead.github.io/DanMatrix)
+
+## Commands
+
+### Build project
+
+`npm run build`
+
+### Build documentation
+
+`npm run build:doc`
+
+### Run tests
+
+`npm run test`

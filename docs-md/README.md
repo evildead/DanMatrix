@@ -22,3 +22,8 @@ matrix.removeColumnAt(1);
 
 console.log(matrix.getMatrixString());
 ```
+
+## Code Documentation
+
+- [Code Documentation (Markdown)](./docs-md/modules.md)
+- [Code Documentation (Html)](https://evildead.github.io/DanMatrix)
