@@ -35,3 +35,7 @@ console.log(matrix.getMatrixString());
 ### Build documentation
 
 `npm run build:doc`
+
+### Run tests
+
+`npm run test`
