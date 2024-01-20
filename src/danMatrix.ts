@@ -3,13 +3,34 @@ import _ from 'lodash';
 
 import { DanMatrixConstructorType, DanMatrixRowsIterator, DanMatrixColumnsIterator } from '.';
 
+/**
+ * DanMatrix is a class to handle two-dimension vectors, or matrices
+ * @typeParam T is the type of element storable in the matrix
+ */
 export class DanMatrix<T> {
+  /**
+   * The data structure containing the real data.
+   *
+   * It's defined as an Array of Array of T
+   * @typeParam T is the type of element storable in the matrix
+   */
   private _2dvector: Array<Array<T>>;
 
+  /**
+   * The public constructor of DanMatrix
+   *
+   * @param props the optional input of type DanMatrixConstructorType
+   */
   constructor(props?: DanMatrixConstructorType<T>) {
     this.setupMatrix(props);
   }
 
+  /**
+   * The public method to setup the matrix
+   *
+   * @param props the optional input of type DanMatrixConstructorType
+   * @throws Error if a wrong input is passed
+   */
   public setupMatrix(props?: DanMatrixConstructorType<T>) {
     this._2dvector = [];
     if (props) {
@@ -33,11 +54,20 @@ export class DanMatrix<T> {
     }
   }
 
+  /**
+   * Clone the current DanMatrix instance
+   * @returns a new DanMatrix instance equal to the current one
+   */
   public clone(): DanMatrix<T> {
     const clonedMatrix: DanMatrix<T> = new DanMatrix<T>(this._2dvector);
     return clonedMatrix;
   }
 
+  /**
+   * Get a string representation of the current DanMatrix instance
+   * @param fixedSpacing an optional numeric value for the cell spacing (default is 15)
+   * @returns a string representation of the current DanMatrix instance
+   */
   public getMatrixString(fixedSpacing: number = 15): string {
     let outStr = '';
     for (let rowIndex = 0; rowIndex < this._2dvector.length; rowIndex++) {
@@ -61,10 +91,18 @@ export class DanMatrix<T> {
     return outStr;
   }
 
+  /**
+   * Get the number of rows of the matrix
+   * @returns the number of rows of the matrix
+   */
   public rowsNum(): number {
     return this._2dvector.length;
   }
 
+  /**
+   * Get the number of columns of the matrix
+   * @returns the number of columns of the matrix
+   */
   public colsNum(): number {
     if (this._2dvector.length < 1) {
       return 0;
@@ -72,18 +110,37 @@ export class DanMatrix<T> {
     return this._2dvector[0].length;
   }
 
+  /**
+   * Get the matrix value at (x, y)
+   * @param x - the x coordinate (index of the rows)
+   * @param y - the y coordinate (index of the columns)
+   * @returns the value at (x, y) or undefined if the coordinates are wrong
+   */
   public get(x: number, y: number): T | undefined {
     return this._2dvector[x]?.[y];
   }
 
+  /**
+   * Set a value at (x, y)
+   * @param x - the x coordinate (index of the rows)
+   * @param y - the y coordinate (index of the columns)
+   * @param val - the value to set
+   * @returns the new value set at (x, y) or undefined if the coordinates are wrong
+   */
   public set(x: number, y: number, val: T): T | undefined {
     if (x >= this._2dvector.length || y >= this._2dvector[x].length) {
       return undefined;
     }
     this._2dvector[x][y] = val;
-    return val;
+    return this._2dvector[x][y];
   }
 
+  /**
+   * Get the matrix value at `coord`
+   * @param coord a string representation of the coordinates using the dash '-' as separator.
+   * Example: "1-4" represents x:1 and y:4
+   * @returns the value at `coord` or undefined if the string coordinates are wrong
+   */
   public getCoord(coord: string): T | undefined {
     if (!_.isString(coord)) {
       return undefined;
@@ -95,6 +152,13 @@ export class DanMatrix<T> {
     return this.get(coords[0], coords[1]);
   }
 
+  /**
+   * Set a value at `coord`
+   * @param coord a string representation of the coordinates using the dash '-' as separator.
+   * Example: "1-4" represents x:1 and y:4
+   * @param val - the value to set
+   * @returns the value at `coord` or undefined if the string coordinates are wrong
+   */
   public setCoord(coord: string, val: T): T | undefined {
     if (!_.isString(coord)) {
       return undefined;
@@ -106,17 +170,29 @@ export class DanMatrix<T> {
     return this.set(coords[0], coords[1], val);
   }
 
+  /**
+   * Add a row to the matrix
+   * @param row - the row to be added
+   * @returns true if the new row was correctly added, otherwise it returns false
+   * @throws Error if a wrong input is passed
+   */
   public addRow(row: Array<T>): boolean {
     if (!Array.isArray(row) || row.length < 1) {
       throw new Error('Wrong input');
     }
-    if (this._2dvector.length > 0 && row.length !== this._2dvector[0].length) {
+    if (this._2dvector.length > 0 && row.length !== this.colsNum()) {
       return false;
     }
     this._2dvector.push(_.cloneDeep(row));
     return true;
   }
 
+  /**
+   * Add a column to the matrix
+   * @param column - the column to be added
+   * @returns true if the new column was correctly added, otherwise it returns false
+   * @throws Error if a wrong input is passed
+   */
   public addColumn(column: Array<T>): boolean {
     if (!Array.isArray(column) || column.length < 1) {
       throw new Error('Wrong input');
@@ -137,6 +213,11 @@ export class DanMatrix<T> {
     return true;
   }
 
+  /**
+   * Look for a specific value inside the matrix
+   * @param val - the value you're looking for
+   * @returns - an array of string coordinates where the value was found
+   */
   public lookForValue(val: T): Array<string> {
     const coordsArray: Array<string> = [];
     for (let rowIndex = 0; rowIndex < this._2dvector.length; rowIndex++) {
@@ -151,6 +232,12 @@ export class DanMatrix<T> {
     return coordsArray;
   }
 
+  /**
+   * Get matrix row at `rowIndex`
+   * @param rowIndex the row index
+   * @returns the requested row as array of values
+   * @throws Error if a wrong input is passed
+   */
   public getRowAt(rowIndex: number): Array<T> | undefined {
     if (!_.isInteger(rowIndex) || rowIndex < 0) {
       throw new Error('Wrong input');
@@ -161,6 +248,13 @@ export class DanMatrix<T> {
     return _.cloneDeep(this._2dvector[rowIndex]);
   }
 
+  /**
+   * Insert a row at the specific `rowIndex` index
+   * @param rowIndex the row index
+   * @param row the row to insert as an array of values
+   * @returns true if the new row was correctly inserted, otherwise it returns false
+   * @throws Error if a wrong input is passed
+   */
   public insertRowAt(rowIndex: number, row: Array<T>): boolean {
     if (!_.isInteger(rowIndex) || rowIndex < 0 || !Array.isArray(row) || row.length < 1) {
       throw new Error('Wrong input');
@@ -171,13 +265,19 @@ export class DanMatrix<T> {
     if (rowIndex === this._2dvector.length) {
       return this.addRow(row);
     }
-    if (row.length !== this._2dvector[0].length) {
+    if (row.length !== this.colsNum()) {
       return false;
     }
     this._2dvector.splice(rowIndex, 0, _.cloneDeep(row));
     return true;
   }
 
+  /**
+   * Get matrix column at `columnIndex`
+   * @param columnIndex the column index
+   * @returns the requested column as array of values
+   * @throws Error if a wrong input is passed
+   */
   public getColumnAt(columnIndex: number): Array<T> | undefined {
     if (!_.isInteger(columnIndex) || columnIndex < 0) {
       throw new Error('Wrong input');
@@ -192,6 +292,13 @@ export class DanMatrix<T> {
     return columnToReturn;
   }
 
+  /**
+   * Insert a column at the specific `columnIndex` index
+   * @param columnIndex the column index
+   * @param column the column to insert as an array of values
+   * @returns true if the new column was correctly inserted, otherwise it returns false
+   * @throws Error if a wrong input is passed
+   */
   public insertColumnAt(columnIndex: number, column: Array<T>): boolean {
     if (!_.isInteger(columnIndex) || columnIndex < 0 || !Array.isArray(column) || column.length < 1) {
       throw new Error('Wrong input');
@@ -200,9 +307,9 @@ export class DanMatrix<T> {
       if (column.length !== this._2dvector.length) {
         return false;
       }
-      if (columnIndex > this._2dvector[0].length) {
+      if (columnIndex > this.colsNum()) {
         return false;
-      } else if (columnIndex === this._2dvector[0].length) {
+      } else if (columnIndex === this.colsNum()) {
         return this.addColumn(column);
       } else {
         for (let rowIndex = 0; rowIndex < this._2dvector.length; rowIndex++) {
@@ -249,7 +356,7 @@ export class DanMatrix<T> {
     if (!_.isInteger(columnIndex) || columnIndex < 0) {
       throw new Error('Wrong input');
     }
-    if (this._2dvector.length < 1 || columnIndex >= this._2dvector[0].length) {
+    if (this._2dvector.length < 1 || columnIndex >= this.colsNum()) {
       return false;
     }
     for (let rowIndex = 0; rowIndex < this._2dvector.length; rowIndex++) {

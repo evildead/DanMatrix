@@ -1,3 +1,5 @@
+danmatrix / [Exports](modules.md)
+
 # DanMatrix
 
 DanMatrix is a data structure able to handle and manipulate 2D-vectors
@@ -20,8 +22,3 @@ matrix.removeColumnAt(1);
 
 console.log(matrix.getMatrixString());
 ```
-
-## Code Documentation
-
-- [Code Documentation (Markdown)](./docs/code-documentation-md/modules.md)
-- [Code Documentation (Html)](./docs/code-documentation-html/modules.html)

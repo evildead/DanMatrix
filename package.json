@@ -14,6 +14,7 @@
     "build": "npm run clean && tsc && npm i --package-lock-only",
     "test": "jest --watchAll=false --coverage --coverageReporters=html",
     "test:ci": "jest --watchAll=false --coverage --ci --reporters=jest-junit --reporters=default",
+    "build:doc": "typedoc --options typedoc.config.md.js && typedoc --options typedoc.config.html.js",
     "lint-fix": "eslint ./src --fix --cache",
     "format": "prettier --write ."
   },
@@ -56,6 +57,10 @@
     "rimraf": "^5.0.5",
     "ts-jest": "^29.1.1",
     "ts-node": "^10.9.2",
+    "typedoc": "^0.25.7",
+    "typedoc-material-theme": "^1.0.2",
+    "typedoc-plugin-markdown": "^3.17.1",
+    "typedoc-plugin-missing-exports": "^2.2.0",
     "typescript": "^5.3.3"
   }
 }
