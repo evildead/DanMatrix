@@ -23,5 +23,15 @@ console.log(matrix.getMatrixString());
 
 ## Code Documentation
 
-- [Code Documentation (Markdown)](./docs/code-documentation-md/modules.md)
-- [Code Documentation (Html)](./docs/code-documentation-html/modules.html)
+- [Code Documentation (Markdown)](./docs-md/modules.md)
+- [Code Documentation (Html)](https://evildead.github.io/DanMatrix)
+
+## Commands
+
+### Build project
+
+`npm run build`
+
+### Build documentation
+
+`npm run build:doc`
