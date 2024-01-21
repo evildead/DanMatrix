@@ -1,6 +1,6 @@
 {
   "name": "danmatrix",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "engines": {
     "node": ">=18"
   },
@@ -30,7 +30,7 @@
   "author": "Danilo Carrabino",
   "license": "ISC",
   "jest-junit": {
-    "outputDirectory": "./test-reports"
+    "outputDirectory": "./docs/test-reports"
   },
   "dependencies": {
     "lodash": "^4.17.21"

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="19" failures="0" errors="0" time="1.818">
+  <testsuite name="DanMatrixColumnsIterator" errors="0" failures="0" skipped="0" timestamp="2024-01-21T11:43:26" time="1.341" tests="3">
+    <testcase classname="DanMatrixColumnsIterator check the constructor with correct parameters" name="DanMatrixColumnsIterator check the constructor with correct parameters" time="0.006">
+    </testcase>
+    <testcase classname="DanMatrixColumnsIterator check the constructor with wrong parameters - should throw exceptions" name="DanMatrixColumnsIterator check the constructor with wrong parameters - should throw exceptions" time="0.009">
+    </testcase>
+    <testcase classname="DanMatrixColumnsIterator check it iterates through all the columns" name="DanMatrixColumnsIterator check it iterates through all the columns" time="0.005">
+    </testcase>
+  </testsuite>
+  <testsuite name="DanMatrixRowsIterator" errors="0" failures="0" skipped="0" timestamp="2024-01-21T11:43:26" time="1.363" tests="3">
+    <testcase classname="DanMatrixRowsIterator check the constructor with correct parameters" name="DanMatrixRowsIterator check the constructor with correct parameters" time="0.006">
+    </testcase>
+    <testcase classname="DanMatrixRowsIterator check the constructor with wrong parameters - should throw exceptions" name="DanMatrixRowsIterator check the constructor with wrong parameters - should throw exceptions" time="0.01">
+    </testcase>
+    <testcase classname="DanMatrixRowsIterator check it iterates through all the rows" name="DanMatrixRowsIterator check it iterates through all the rows" time="0.006">
+    </testcase>
+  </testsuite>
+  <testsuite name="Matrix" errors="0" failures="0" skipped="0" timestamp="2024-01-21T11:43:26" time="1.42" tests="13">
+    <testcase classname="Matrix check the constructor with correct parameters" name="Matrix check the constructor with correct parameters" time="0.006">
+    </testcase>
+    <testcase classname="Matrix check the constructor with wrong parameters - should throw exceptions" name="Matrix check the constructor with wrong parameters - should throw exceptions" time="0.037">
+    </testcase>
+    <testcase classname="Matrix should throw exceptions if wrong parameters are passed to setupMatrix" name="Matrix should throw exceptions if wrong parameters are passed to setupMatrix" time="0.002">
+    </testcase>
+    <testcase classname="Matrix check the getters and setters" name="Matrix check the getters and setters" time="0.002">
+    </testcase>
+    <testcase classname="Matrix check addRow" name="Matrix check addRow" time="0.021">
+    </testcase>
+    <testcase classname="Matrix check addColumn" name="Matrix check addColumn" time="0.005">
+    </testcase>
+    <testcase classname="Matrix check lookForValue" name="Matrix check lookForValue" time="0.001">
+    </testcase>
+    <testcase classname="Matrix check insertRowAt and getRowAt" name="Matrix check insertRowAt and getRowAt" time="0.003">
+    </testcase>
+    <testcase classname="Matrix check insertColumnAt and getColumnAt" name="Matrix check insertColumnAt and getColumnAt" time="0.003">
+    </testcase>
+    <testcase classname="Matrix check removeRowAt and removeColumnAt" name="Matrix check removeRowAt and removeColumnAt" time="0.002">
+    </testcase>
+    <testcase classname="Matrix check replaceRowAt and replaceColumnAt" name="Matrix check replaceRowAt and replaceColumnAt" time="0.002">
+    </testcase>
+    <testcase classname="Matrix check clone" name="Matrix check clone" time="0.002">
+    </testcase>
+    <testcase classname="Matrix check rows and columns iterators" name="Matrix check rows and columns iterators" time="0.003">
+    </testcase>
+  </testsuite>
+</testsuites>

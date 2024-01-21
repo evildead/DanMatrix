@@ -23,12 +23,14 @@ matrix.removeColumnAt(1);
 console.log(matrix.getMatrixString());
 ```
 
-## Code Documentation
+## Documentation
 
-- [Code Documentation (Markdown)](./docs-md/modules.md)
-- [Code Documentation (Html)](https://evildead.github.io/DanMatrix)
+- [Code Documentation (Markdown)](./docs/codedocumentation-md/modules.md)
+- [Code Documentation (Html)](https://evildead.github.io/DanMatrix/codedocumentation-html/modules.html)
+- [Test coverage](https://evildead.github.io/DanMatrix/test-coverage/)
+- [Jest-Junit Report](https://evildead.github.io/DanMatrix/test-reports/junit.xml)
 
-## Commands
+## Scripts
 
 ### Build project
 

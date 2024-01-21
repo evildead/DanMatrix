@@ -36,7 +36,7 @@ The MatrixIterator interface
 
 #### Defined in
 
-[src/commons.ts:6](https://github.com/evildead/DanMatrix/blob/f0a3730/src/commons.ts#L6)
+[src/commons.ts:6](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/commons.ts#L6)
 
 ___
 
@@ -50,7 +50,7 @@ ___
 
 #### Defined in
 
-[src/commons.ts:12](https://github.com/evildead/DanMatrix/blob/f0a3730/src/commons.ts#L12)
+[src/commons.ts:12](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/commons.ts#L12)
 
 ___
 
@@ -64,7 +64,7 @@ ___
 
 #### Defined in
 
-[src/commons.ts:9](https://github.com/evildead/DanMatrix/blob/f0a3730/src/commons.ts#L9)
+[src/commons.ts:9](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/commons.ts#L9)
 
 ___
 
@@ -78,4 +78,4 @@ ___
 
 #### Defined in
 
-[src/commons.ts:15](https://github.com/evildead/DanMatrix/blob/f0a3730/src/commons.ts#L15)
+[src/commons.ts:15](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/commons.ts#L15)
