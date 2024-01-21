@@ -27,7 +27,7 @@ console.log(matrix.getMatrixString());
 
 - [Code Documentation (Markdown)](./docs/codedocumentation-md/modules.md)
 - [Code Documentation (Html)](https://evildead.github.io/DanMatrix/codedocumentation-html/modules.html)
-- [Test coverage](https://evildead.github.io/DanMatrix/test-coverage/)
+- [Test coverage](https://evildead.github.io/DanMatrix/test-coverage/index.html)
 - [Jest-Junit Report](https://evildead.github.io/DanMatrix/test-reports/junit.xml)
 
 ## Scripts
