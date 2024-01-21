@@ -30,7 +30,7 @@
   "author": "Danilo Carrabino",
   "license": "ISC",
   "jest-junit": {
-    "outputDirectory": "./test-reports"
+    "outputDirectory": "./docs/test-reports"
   },
   "dependencies": {
     "lodash": "^4.17.21"

@@ -61,7 +61,7 @@ The public class constructor
 
 #### Defined in
 
-[src/iterators/danMatrixColumnsIterator.ts:16](https://github.com/evildead/DanMatrix/blob/f0a3730/src/iterators/danMatrixColumnsIterator.ts#L16)
+[src/iterators/danMatrixColumnsIterator.ts:16](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/iterators/danMatrixColumnsIterator.ts#L16)
 
 ## Properties
 
@@ -71,7 +71,7 @@ The public class constructor
 
 #### Defined in
 
-[src/iterators/danMatrixColumnsIterator.ts:10](https://github.com/evildead/DanMatrix/blob/f0a3730/src/iterators/danMatrixColumnsIterator.ts#L10)
+[src/iterators/danMatrixColumnsIterator.ts:10](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/iterators/danMatrixColumnsIterator.ts#L10)
 
 ___
 
@@ -81,7 +81,7 @@ ___
 
 #### Defined in
 
-[src/iterators/danMatrixColumnsIterator.ts:8](https://github.com/evildead/DanMatrix/blob/f0a3730/src/iterators/danMatrixColumnsIterator.ts#L8)
+[src/iterators/danMatrixColumnsIterator.ts:8](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/iterators/danMatrixColumnsIterator.ts#L8)
 
 ## Methods
 
@@ -104,7 +104,7 @@ an iterator object.
 
 #### Defined in
 
-[src/iterators/danMatrixColumnsIterator.ts:75](https://github.com/evildead/DanMatrix/blob/f0a3730/src/iterators/danMatrixColumnsIterator.ts#L75)
+[src/iterators/danMatrixColumnsIterator.ts:75](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/iterators/danMatrixColumnsIterator.ts#L75)
 
 ___
 
@@ -120,7 +120,7 @@ Init the class fields
 
 #### Defined in
 
-[src/iterators/danMatrixColumnsIterator.ts:27](https://github.com/evildead/DanMatrix/blob/f0a3730/src/iterators/danMatrixColumnsIterator.ts#L27)
+[src/iterators/danMatrixColumnsIterator.ts:27](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/iterators/danMatrixColumnsIterator.ts#L27)
 
 ___
 
@@ -140,7 +140,7 @@ Get the current column, or return undefined if the iterator was not yet started
 
 #### Defined in
 
-[src/iterators/danMatrixColumnsIterator.ts:35](https://github.com/evildead/DanMatrix/blob/f0a3730/src/iterators/danMatrixColumnsIterator.ts#L35)
+[src/iterators/danMatrixColumnsIterator.ts:35](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/iterators/danMatrixColumnsIterator.ts#L35)
 
 ___
 
@@ -162,7 +162,7 @@ true if the iterator can return more columns, false if there are no columns left
 
 #### Defined in
 
-[src/iterators/danMatrixColumnsIterator.ts:59](https://github.com/evildead/DanMatrix/blob/f0a3730/src/iterators/danMatrixColumnsIterator.ts#L59)
+[src/iterators/danMatrixColumnsIterator.ts:59](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/iterators/danMatrixColumnsIterator.ts#L59)
 
 ___
 
@@ -182,7 +182,7 @@ Get the next column, or return undefined if the iterator's end was reached
 
 #### Defined in
 
-[src/iterators/danMatrixColumnsIterator.ts:47](https://github.com/evildead/DanMatrix/blob/f0a3730/src/iterators/danMatrixColumnsIterator.ts#L47)
+[src/iterators/danMatrixColumnsIterator.ts:47](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/iterators/danMatrixColumnsIterator.ts#L47)
 
 ___
 
@@ -202,4 +202,4 @@ Restart the iterator
 
 #### Defined in
 
-[src/iterators/danMatrixColumnsIterator.ts:66](https://github.com/evildead/DanMatrix/blob/f0a3730/src/iterators/danMatrixColumnsIterator.ts#L66)
+[src/iterators/danMatrixColumnsIterator.ts:66](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/iterators/danMatrixColumnsIterator.ts#L66)

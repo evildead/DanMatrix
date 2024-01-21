@@ -61,7 +61,7 @@ The public class constructor
 
 #### Defined in
 
-[src/iterators/danMatrixRowsIterator.ts:16](https://github.com/evildead/DanMatrix/blob/f0a3730/src/iterators/danMatrixRowsIterator.ts#L16)
+[src/iterators/danMatrixRowsIterator.ts:16](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/iterators/danMatrixRowsIterator.ts#L16)
 
 ## Properties
 
@@ -71,7 +71,7 @@ The public class constructor
 
 #### Defined in
 
-[src/iterators/danMatrixRowsIterator.ts:8](https://github.com/evildead/DanMatrix/blob/f0a3730/src/iterators/danMatrixRowsIterator.ts#L8)
+[src/iterators/danMatrixRowsIterator.ts:8](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/iterators/danMatrixRowsIterator.ts#L8)
 
 ___
 
@@ -81,7 +81,7 @@ ___
 
 #### Defined in
 
-[src/iterators/danMatrixRowsIterator.ts:10](https://github.com/evildead/DanMatrix/blob/f0a3730/src/iterators/danMatrixRowsIterator.ts#L10)
+[src/iterators/danMatrixRowsIterator.ts:10](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/iterators/danMatrixRowsIterator.ts#L10)
 
 ## Methods
 
@@ -104,7 +104,7 @@ an iterator object.
 
 #### Defined in
 
-[src/iterators/danMatrixRowsIterator.ts:75](https://github.com/evildead/DanMatrix/blob/f0a3730/src/iterators/danMatrixRowsIterator.ts#L75)
+[src/iterators/danMatrixRowsIterator.ts:75](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/iterators/danMatrixRowsIterator.ts#L75)
 
 ___
 
@@ -120,7 +120,7 @@ Init the class fields
 
 #### Defined in
 
-[src/iterators/danMatrixRowsIterator.ts:27](https://github.com/evildead/DanMatrix/blob/f0a3730/src/iterators/danMatrixRowsIterator.ts#L27)
+[src/iterators/danMatrixRowsIterator.ts:27](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/iterators/danMatrixRowsIterator.ts#L27)
 
 ___
 
@@ -140,7 +140,7 @@ Get the current row, or return undefined if the iterator was not yet started
 
 #### Defined in
 
-[src/iterators/danMatrixRowsIterator.ts:35](https://github.com/evildead/DanMatrix/blob/f0a3730/src/iterators/danMatrixRowsIterator.ts#L35)
+[src/iterators/danMatrixRowsIterator.ts:35](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/iterators/danMatrixRowsIterator.ts#L35)
 
 ___
 
@@ -162,7 +162,7 @@ true if the iterator can return more rows, false if there are no rows left
 
 #### Defined in
 
-[src/iterators/danMatrixRowsIterator.ts:59](https://github.com/evildead/DanMatrix/blob/f0a3730/src/iterators/danMatrixRowsIterator.ts#L59)
+[src/iterators/danMatrixRowsIterator.ts:59](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/iterators/danMatrixRowsIterator.ts#L59)
 
 ___
 
@@ -182,7 +182,7 @@ Get the next row, or return undefined if the iterator's end was reached
 
 #### Defined in
 
-[src/iterators/danMatrixRowsIterator.ts:47](https://github.com/evildead/DanMatrix/blob/f0a3730/src/iterators/danMatrixRowsIterator.ts#L47)
+[src/iterators/danMatrixRowsIterator.ts:47](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/iterators/danMatrixRowsIterator.ts#L47)
 
 ___
 
@@ -202,4 +202,4 @@ Restart the iterator
 
 #### Defined in
 
-[src/iterators/danMatrixRowsIterator.ts:66](https://github.com/evildead/DanMatrix/blob/f0a3730/src/iterators/danMatrixRowsIterator.ts#L66)
+[src/iterators/danMatrixRowsIterator.ts:66](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/iterators/danMatrixRowsIterator.ts#L66)

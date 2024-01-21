@@ -30,7 +30,7 @@ and filled with values _val_
 
 #### Defined in
 
-[src/commons.ts:28](https://github.com/evildead/DanMatrix/blob/f0a3730/src/commons.ts#L28)
+[src/commons.ts:28](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/commons.ts#L28)
 
 ___
 
@@ -40,7 +40,7 @@ ___
 
 #### Defined in
 
-[src/commons.ts:27](https://github.com/evildead/DanMatrix/blob/f0a3730/src/commons.ts#L27)
+[src/commons.ts:27](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/commons.ts#L27)
 
 ___
 
@@ -50,4 +50,4 @@ ___
 
 #### Defined in
 
-[src/commons.ts:29](https://github.com/evildead/DanMatrix/blob/f0a3730/src/commons.ts#L29)
+[src/commons.ts:29](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/commons.ts#L29)
