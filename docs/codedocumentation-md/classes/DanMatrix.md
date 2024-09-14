@@ -71,7 +71,7 @@ The public constructor of DanMatrix
 
 #### Defined in
 
-[src/danMatrix.ts:24](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/danMatrix.ts#L24)
+[src/danMatrix.ts:24](https://github.com/evildead/DanMatrix/blob/f85a2ea/src/danMatrix.ts#L24)
 
 ## Properties
 
@@ -89,7 +89,7 @@ is the type of element storable in the matrix
 
 #### Defined in
 
-[src/danMatrix.ts:17](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/danMatrix.ts#L17)
+[src/danMatrix.ts:17](https://github.com/evildead/DanMatrix/blob/f85a2ea/src/danMatrix.ts#L17)
 
 ## Methods
 
@@ -117,7 +117,7 @@ Error if a wrong input is passed
 
 #### Defined in
 
-[src/danMatrix.ts:196](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/danMatrix.ts#L196)
+[src/danMatrix.ts:198](https://github.com/evildead/DanMatrix/blob/f85a2ea/src/danMatrix.ts#L198)
 
 ___
 
@@ -145,7 +145,7 @@ Error if a wrong input is passed
 
 #### Defined in
 
-[src/danMatrix.ts:179](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/danMatrix.ts#L179)
+[src/danMatrix.ts:181](https://github.com/evildead/DanMatrix/blob/f85a2ea/src/danMatrix.ts#L181)
 
 ___
 
@@ -163,7 +163,7 @@ a new DanMatrix instance equal to the current one
 
 #### Defined in
 
-[src/danMatrix.ts:61](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/danMatrix.ts#L61)
+[src/danMatrix.ts:61](https://github.com/evildead/DanMatrix/blob/f85a2ea/src/danMatrix.ts#L61)
 
 ___
 
@@ -181,7 +181,7 @@ the number of columns of the matrix
 
 #### Defined in
 
-[src/danMatrix.ts:106](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/danMatrix.ts#L106)
+[src/danMatrix.ts:106](https://github.com/evildead/DanMatrix/blob/f85a2ea/src/danMatrix.ts#L106)
 
 ___
 
@@ -206,7 +206,7 @@ the value at (x, y) or undefined if the coordinates are wrong
 
 #### Defined in
 
-[src/danMatrix.ts:119](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/danMatrix.ts#L119)
+[src/danMatrix.ts:119](https://github.com/evildead/DanMatrix/blob/f85a2ea/src/danMatrix.ts#L119)
 
 ___
 
@@ -234,7 +234,7 @@ Error if a wrong input is passed
 
 #### Defined in
 
-[src/danMatrix.ts:281](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/danMatrix.ts#L281)
+[src/danMatrix.ts:283](https://github.com/evildead/DanMatrix/blob/f85a2ea/src/danMatrix.ts#L283)
 
 ___
 
@@ -252,21 +252,22 @@ the matrix columns iterator
 
 #### Defined in
 
-[src/danMatrix.ts:432](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/danMatrix.ts#L432)
+[src/danMatrix.ts:434](https://github.com/evildead/DanMatrix/blob/f85a2ea/src/danMatrix.ts#L434)
 
 ___
 
 ### getCoord
 
-▸ **getCoord**(`coord`): `undefined` \| `T`
+▸ **getCoord**(`coord`, `separator?`): `undefined` \| `T`
 
 Get the matrix value at `coord`
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `coord` | `string` | a string representation of the coordinates using the dash '-' as separator. Example: "1-4" represents x:1 and y:4 |
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `coord` | `string` | `undefined` | a string representation of the coordinates Example: "1-4" represents x:1 and y:4 |
+| `separator` | `string` | `'-'` | the string coordinates separator: by default it's the dash '-' |
 
 #### Returns
 
@@ -276,7 +277,7 @@ the value at `coord` or undefined if the string coordinates are wrong
 
 #### Defined in
 
-[src/danMatrix.ts:144](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/danMatrix.ts#L144)
+[src/danMatrix.ts:145](https://github.com/evildead/DanMatrix/blob/f85a2ea/src/danMatrix.ts#L145)
 
 ___
 
@@ -300,7 +301,7 @@ a string representation of the current DanMatrix instance
 
 #### Defined in
 
-[src/danMatrix.ts:71](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/danMatrix.ts#L71)
+[src/danMatrix.ts:71](https://github.com/evildead/DanMatrix/blob/f85a2ea/src/danMatrix.ts#L71)
 
 ___
 
@@ -328,7 +329,7 @@ Error if a wrong input is passed
 
 #### Defined in
 
-[src/danMatrix.ts:241](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/danMatrix.ts#L241)
+[src/danMatrix.ts:243](https://github.com/evildead/DanMatrix/blob/f85a2ea/src/danMatrix.ts#L243)
 
 ___
 
@@ -346,7 +347,7 @@ the matrix rows iterator
 
 #### Defined in
 
-[src/danMatrix.ts:424](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/danMatrix.ts#L424)
+[src/danMatrix.ts:426](https://github.com/evildead/DanMatrix/blob/f85a2ea/src/danMatrix.ts#L426)
 
 ___
 
@@ -375,7 +376,7 @@ Error if a wrong input is passed
 
 #### Defined in
 
-[src/danMatrix.ts:302](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/danMatrix.ts#L302)
+[src/danMatrix.ts:304](https://github.com/evildead/DanMatrix/blob/f85a2ea/src/danMatrix.ts#L304)
 
 ___
 
@@ -404,7 +405,7 @@ Error if a wrong input is passed
 
 #### Defined in
 
-[src/danMatrix.ts:258](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/danMatrix.ts#L258)
+[src/danMatrix.ts:260](https://github.com/evildead/DanMatrix/blob/f85a2ea/src/danMatrix.ts#L260)
 
 ___
 
@@ -428,7 +429,7 @@ Look for a specific value inside the matrix
 
 #### Defined in
 
-[src/danMatrix.ts:221](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/danMatrix.ts#L221)
+[src/danMatrix.ts:223](https://github.com/evildead/DanMatrix/blob/f85a2ea/src/danMatrix.ts#L223)
 
 ___
 
@@ -456,7 +457,7 @@ exception "Error('Wrong input')" when any parameter in input is wrong
 
 #### Defined in
 
-[src/danMatrix.ts:355](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/danMatrix.ts#L355)
+[src/danMatrix.ts:357](https://github.com/evildead/DanMatrix/blob/f85a2ea/src/danMatrix.ts#L357)
 
 ___
 
@@ -484,7 +485,7 @@ exception "Error('Wrong input')" when any parameter in input is wrong
 
 #### Defined in
 
-[src/danMatrix.ts:337](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/danMatrix.ts#L337)
+[src/danMatrix.ts:339](https://github.com/evildead/DanMatrix/blob/f85a2ea/src/danMatrix.ts#L339)
 
 ___
 
@@ -513,7 +514,7 @@ exception "Error('Wrong input')" when any parameter in input is wrong
 
 #### Defined in
 
-[src/danMatrix.ts:404](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/danMatrix.ts#L404)
+[src/danMatrix.ts:406](https://github.com/evildead/DanMatrix/blob/f85a2ea/src/danMatrix.ts#L406)
 
 ___
 
@@ -542,7 +543,7 @@ exception "Error('Wrong input')" when any parameter in input is wrong
 
 #### Defined in
 
-[src/danMatrix.ts:378](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/danMatrix.ts#L378)
+[src/danMatrix.ts:380](https://github.com/evildead/DanMatrix/blob/f85a2ea/src/danMatrix.ts#L380)
 
 ___
 
@@ -560,7 +561,7 @@ the number of rows of the matrix
 
 #### Defined in
 
-[src/danMatrix.ts:98](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/danMatrix.ts#L98)
+[src/danMatrix.ts:98](https://github.com/evildead/DanMatrix/blob/f85a2ea/src/danMatrix.ts#L98)
 
 ___
 
@@ -586,22 +587,23 @@ the new value set at (x, y) or undefined if the coordinates are wrong
 
 #### Defined in
 
-[src/danMatrix.ts:130](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/danMatrix.ts#L130)
+[src/danMatrix.ts:130](https://github.com/evildead/DanMatrix/blob/f85a2ea/src/danMatrix.ts#L130)
 
 ___
 
 ### setCoord
 
-▸ **setCoord**(`coord`, `val`): `undefined` \| `T`
+▸ **setCoord**(`coord`, `val`, `separator?`): `undefined` \| `T`
 
 Set a value at `coord`
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `coord` | `string` | a string representation of the coordinates using the dash '-' as separator. Example: "1-4" represents x:1 and y:4 |
-| `val` | `T` | the value to set |
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `coord` | `string` | `undefined` | a string representation of the coordinates Example: "1-4" represents x:1 and y:4 |
+| `val` | `T` | `undefined` | the value to set |
+| `separator` | `string` | `'-'` | the string coordinates separator: by default it's the dash '-' |
 
 #### Returns
 
@@ -611,7 +613,7 @@ the value at `coord` or undefined if the string coordinates are wrong
 
 #### Defined in
 
-[src/danMatrix.ts:162](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/danMatrix.ts#L162)
+[src/danMatrix.ts:164](https://github.com/evildead/DanMatrix/blob/f85a2ea/src/danMatrix.ts#L164)
 
 ___
 
@@ -637,4 +639,4 @@ Error if a wrong input is passed
 
 #### Defined in
 
-[src/danMatrix.ts:34](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/danMatrix.ts#L34)
+[src/danMatrix.ts:34](https://github.com/evildead/DanMatrix/blob/f85a2ea/src/danMatrix.ts#L34)

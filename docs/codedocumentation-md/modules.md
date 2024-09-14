@@ -44,4 +44,4 @@ It can be:
 
 #### Defined in
 
-[src/commons.ts:41](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/commons.ts#L41)
+[src/commons.ts:41](https://github.com/evildead/DanMatrix/blob/f85a2ea/src/commons.ts#L41)
