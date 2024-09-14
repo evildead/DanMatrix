@@ -137,15 +137,16 @@ export class DanMatrix<T> {
 
   /**
    * Get the matrix value at `coord`
-   * @param coord a string representation of the coordinates using the dash '-' as separator.
+   * @param coord a string representation of the coordinates
    * Example: "1-4" represents x:1 and y:4
+   * @param separator the string coordinates separator: by default it's the dash '-'
    * @returns the value at `coord` or undefined if the string coordinates are wrong
    */
-  public getCoord(coord: string): T | undefined {
+  public getCoord(coord: string, separator: string = '-'): T | undefined {
     if (!_.isString(coord)) {
       return undefined;
     }
-    const coords = coord.split('-').map((elem: string) => Number(elem.trim()));
+    const coords = coord.split(separator).map((elem: string) => Number(elem.trim()));
     if (coords.length < 2) {
       return undefined;
     }
@@ -154,16 +155,17 @@ export class DanMatrix<T> {
 
   /**
    * Set a value at `coord`
-   * @param coord a string representation of the coordinates using the dash '-' as separator.
+   * @param coord a string representation of the coordinates
    * Example: "1-4" represents x:1 and y:4
    * @param val - the value to set
+   * @param separator the string coordinates separator: by default it's the dash '-'
    * @returns the value at `coord` or undefined if the string coordinates are wrong
    */
-  public setCoord(coord: string, val: T): T | undefined {
+  public setCoord(coord: string, val: T, separator: string = '-'): T | undefined {
     if (!_.isString(coord)) {
       return undefined;
     }
-    const coords = coord.split('-').map((elem: string) => Number(elem.trim()));
+    const coords = coord.split(separator).map((elem: string) => Number(elem.trim()));
     if (coords.length < 2) {
       return undefined;
     }

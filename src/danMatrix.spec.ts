@@ -126,6 +126,7 @@ describe('Matrix', () => {
     expect(myMatrix02.getCoord('0-1')).toBe(23);
     expect(myMatrix02.get(5, 9)).toBeUndefined();
     expect(myMatrix02.getCoord('01')).toBeUndefined();
+    expect(myMatrix02.getCoord('0|-1', '|')).toBeUndefined();
 
     const myMatrix03 = new DanMatrix<string>([
       ['a', 'aa', 'aaa', 'aaaa', 'aaaaa', 'aaaaaa'],
@@ -138,7 +139,7 @@ describe('Matrix', () => {
     expect(myMatrix03.getCoord('0-1')).toBe('aa');
     expect(myMatrix03.get(5, 9)).toBeUndefined();
     expect(myMatrix03.set(4, 4, 'eeeee')).toBeUndefined();
-    expect(myMatrix03.getCoord('2-5')).toBe('cccccc');
+    expect(myMatrix03.getCoord('2;5', ';')).toBe('cccccc');
     expect(myMatrix03.setCoord('2-5', 'CCCCCC')).toBe('CCCCCC');
     expect(myMatrix03.get(2, 5)).toBe('CCCCCC');
     expect(myMatrix03.getCoord(25 as any)).toBeUndefined();
@@ -158,7 +159,7 @@ describe('Matrix', () => {
     expect(myMatrix01.rowsNum()).toBe(3);
     expect(myMatrix01.colsNum()).toBe(3);
     expect(myMatrix01.get(1, 2)).toBe('@');
-    expect(myMatrix01.getCoord('0-1')).toBe('@');
+    expect(myMatrix01.getCoord('0|1', '|')).toBe('@');
     expect(myMatrix01.get(2, 2)).toBe('3');
 
     const myMatrix02 = new DanMatrix<number>([
