@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/iterators/danMatrixColumnsIterator.ts</title>
+    <title>Code coverage report for src/iterators/danMatrixRowsIterator.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/iterators</a> danMatrixColumnsIterator.ts</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/iterators</a> danMatrixRowsIterator.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -194,10 +194,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -206,10 +206,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-yes">21x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -217,7 +217,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">28x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -237,14 +237,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -256,13 +256,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { MatrixIterator, DanMatrix } from '..';
 &nbsp;
 /**
- * The class DanMatrixColumnsIterator implements MatrixIterator interface and Iterable interface
+ * The class DanMatrixRowsIterator implements MatrixIterator interface and Iterable interface
  */
-export class DanMatrixColumnsIterator&lt;T&gt; implements MatrixIterator&lt;Array&lt;T&gt;&gt;, Iterable&lt;Array&lt;T&gt;&gt; {
+export class DanMatrixRowsIterator&lt;T&gt; implements MatrixIterator&lt;Array&lt;T&gt;&gt;, Iterable&lt;Array&lt;T&gt;&gt; {
   // the matrix
   private _matrix: DanMatrix&lt;T&gt;;
-  // index of the current column, or -1 if the iterator was not yet started
-  private _columnIndex: number;
+  // index of the current row, or -1 if the iterator was not yet started
+  private _rowIndex: number;
 &nbsp;
   /**
    * The public class constructor
@@ -280,39 +280,39 @@ export class DanMatrixColumnsIterator&lt;T&gt; implements MatrixIterator&lt;Arra
    * Init the class fields
    */
   private _initFields(): void {
-    this._columnIndex = -1;
+    this._rowIndex = -1;
   }
 &nbsp;
   /**
-   * Get the current column, or return undefined if the iterator was not yet started
+   * Get the current row, or return undefined if the iterator was not yet started
    * @returns {Array&lt;T&gt;|undefined}
    */
   current(): Array&lt;T&gt; | undefined {
     // the iterator was not yet started
-    if (this._columnIndex &lt; 0) {
+    if (this._rowIndex &lt; 0) {
       return undefined;
     }
-    return this._matrix.getColumnAt(this._columnIndex);
+    return this._matrix.getRowAt(this._rowIndex);
   }
 &nbsp;
   /**
-   * Get the next column, or return undefined if the iterator's end was reached
+   * Get the next row, or return undefined if the iterator's end was reached
    * @returns {Array&lt;T&gt;|undefined}
    */
   next(): Array&lt;T&gt; | undefined {
-    // return undefined if there are no columns left
+    // return undefined if there are no rows left
     if (!this.hasNext()) {
       return undefined;
     }
-    return this._matrix.getColumnAt(++this._columnIndex);
+    return this._matrix.getRowAt(++this._rowIndex);
   }
 &nbsp;
   /**
-   * Check if the iterator can return more columns
-   * @returns {boolean} true if the iterator can return more columns, false if there are no columns left
+   * Check if the iterator can return more rows
+   * @returns {boolean} true if the iterator can return more rows, false if there are no rows left
    */
   hasNext(): boolean {
-    return this._columnIndex &lt; this._matrix.colsNum() - 1;
+    return this._rowIndex &lt; this._matrix.rowsNum() - 1;
   }
 &nbsp;
   /**
@@ -328,7 +328,7 @@ export class DanMatrixColumnsIterator&lt;T&gt; implements MatrixIterator&lt;Arra
    * @returns {Iterator&lt;Array&lt;T&gt;&gt;} an iterator object.
    */
   [Symbol.iterator](): Iterator&lt;Array&lt;T&gt;&gt; {
-    const iteratorInstance: DanMatrixColumnsIterator&lt;T&gt; = this;
+    const iteratorInstance: DanMatrixRowsIterator&lt;T&gt; = this;
 &nbsp;
     return {
       next() {
@@ -355,7 +355,7 @@ export class DanMatrixColumnsIterator&lt;T&gt; implements MatrixIterator&lt;Arra
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-12-27T16:31:40.665Z
+                at 2025-12-27T16:31:50.502Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

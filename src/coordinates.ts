@@ -11,9 +11,8 @@ export class Coordinates {
 
   private constructor(x: number, y: number) {
     this.resetInternalCoordinates();
-    if (!this.setX(x) || !this.setY(y)) {
-      this.resetInternalCoordinates();
-    }
+    this.setX(x);
+    this.setY(y);
   }
 
   private static checkNonNegativeInteger(val: string | number): number | false {
@@ -47,12 +46,12 @@ export class Coordinates {
     return [coords[0], coords[1]];
   }
 
-  public static arrayCoordsToStringCoords(
-    [x, y]: [string | number, string | number],
-    separator: string = '-'
-  ): false | string {
-    const numX = Coordinates.checkNonNegativeInteger(x);
-    const numY = Coordinates.checkNonNegativeInteger(y);
+  public static arrayCoordsToStringCoords(coordsArr: Array<string | number>, separator: string = '-'): false | string {
+    if (!Array.isArray(coordsArr) || coordsArr.length < 2) {
+      return false;
+    }
+    const numX = Coordinates.checkNonNegativeInteger(coordsArr[0]);
+    const numY = Coordinates.checkNonNegativeInteger(coordsArr[1]);
     if (numX === false || numY === false) {
       return false;
     }
