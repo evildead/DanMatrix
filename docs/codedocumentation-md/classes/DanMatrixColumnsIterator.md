@@ -6,7 +6,7 @@
 
 # Class: DanMatrixColumnsIterator\<T\>
 
-Defined in: [src/iterators/danMatrixColumnsIterator.ts:6](https://github.com/evildead/DanMatrix/blob/e833fd9e6c016a85584dd018a0e8285b0563b0f7/src/iterators/danMatrixColumnsIterator.ts#L6)
+Defined in: [src/iterators/danMatrixColumnsIterator.ts:6](https://github.com/evildead/DanMatrix/blob/6914a6e5cdc61f40ec4a7368792742fdc4fc3096/src/iterators/danMatrixColumnsIterator.ts#L6)
 
 The class DanMatrixColumnsIterator implements MatrixIterator interface and Iterable interface
 
@@ -27,7 +27,7 @@ The class DanMatrixColumnsIterator implements MatrixIterator interface and Itera
 
 > **new DanMatrixColumnsIterator**\<`T`\>(`matrix`): `DanMatrixColumnsIterator`\<`T`\>
 
-Defined in: [src/iterators/danMatrixColumnsIterator.ts:16](https://github.com/evildead/DanMatrix/blob/e833fd9e6c016a85584dd018a0e8285b0563b0f7/src/iterators/danMatrixColumnsIterator.ts#L16)
+Defined in: [src/iterators/danMatrixColumnsIterator.ts:16](https://github.com/evildead/DanMatrix/blob/6914a6e5cdc61f40ec4a7368792742fdc4fc3096/src/iterators/danMatrixColumnsIterator.ts#L16)
 
 The public class constructor
 
@@ -49,7 +49,7 @@ the DanMatrix object
 
 > **\[iterator\]**(): [`Iterator`](../-internal-/interfaces/Iterator.md)\<`T`[]\>
 
-Defined in: [src/iterators/danMatrixColumnsIterator.ts:75](https://github.com/evildead/DanMatrix/blob/e833fd9e6c016a85584dd018a0e8285b0563b0f7/src/iterators/danMatrixColumnsIterator.ts#L75)
+Defined in: [src/iterators/danMatrixColumnsIterator.ts:75](https://github.com/evildead/DanMatrix/blob/6914a6e5cdc61f40ec4a7368792742fdc4fc3096/src/iterators/danMatrixColumnsIterator.ts#L75)
 
 A zero-argument function that returns an object, conforming to the [Iterator Protocol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_iterator_protocol).
 In Javascript/Typescript in order to be iterable, an object must implement the "@@iterator" method
@@ -70,7 +70,7 @@ an iterator object.
 
 > **current**(): `T`[] \| `undefined`
 
-Defined in: [src/iterators/danMatrixColumnsIterator.ts:35](https://github.com/evildead/DanMatrix/blob/e833fd9e6c016a85584dd018a0e8285b0563b0f7/src/iterators/danMatrixColumnsIterator.ts#L35)
+Defined in: [src/iterators/danMatrixColumnsIterator.ts:35](https://github.com/evildead/DanMatrix/blob/6914a6e5cdc61f40ec4a7368792742fdc4fc3096/src/iterators/danMatrixColumnsIterator.ts#L35)
 
 Get the current column, or return undefined if the iterator was not yet started
 
@@ -88,7 +88,7 @@ Get the current column, or return undefined if the iterator was not yet started
 
 > **hasNext**(): `boolean`
 
-Defined in: [src/iterators/danMatrixColumnsIterator.ts:59](https://github.com/evildead/DanMatrix/blob/e833fd9e6c016a85584dd018a0e8285b0563b0f7/src/iterators/danMatrixColumnsIterator.ts#L59)
+Defined in: [src/iterators/danMatrixColumnsIterator.ts:59](https://github.com/evildead/DanMatrix/blob/6914a6e5cdc61f40ec4a7368792742fdc4fc3096/src/iterators/danMatrixColumnsIterator.ts#L59)
 
 Check if the iterator can return more columns
 
@@ -108,7 +108,7 @@ true if the iterator can return more columns, false if there are no columns left
 
 > **next**(): `T`[] \| `undefined`
 
-Defined in: [src/iterators/danMatrixColumnsIterator.ts:47](https://github.com/evildead/DanMatrix/blob/e833fd9e6c016a85584dd018a0e8285b0563b0f7/src/iterators/danMatrixColumnsIterator.ts#L47)
+Defined in: [src/iterators/danMatrixColumnsIterator.ts:47](https://github.com/evildead/DanMatrix/blob/6914a6e5cdc61f40ec4a7368792742fdc4fc3096/src/iterators/danMatrixColumnsIterator.ts#L47)
 
 Get the next column, or return undefined if the iterator's end was reached
 
@@ -126,7 +126,7 @@ Get the next column, or return undefined if the iterator's end was reached
 
 > **rewind**(): `void`
 
-Defined in: [src/iterators/danMatrixColumnsIterator.ts:66](https://github.com/evildead/DanMatrix/blob/e833fd9e6c016a85584dd018a0e8285b0563b0f7/src/iterators/danMatrixColumnsIterator.ts#L66)
+Defined in: [src/iterators/danMatrixColumnsIterator.ts:66](https://github.com/evildead/DanMatrix/blob/6914a6e5cdc61f40ec4a7368792742fdc4fc3096/src/iterators/danMatrixColumnsIterator.ts#L66)
 
 Restart the iterator
 

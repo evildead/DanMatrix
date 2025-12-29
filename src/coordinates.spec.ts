@@ -29,48 +29,47 @@ describe('Coordinates', () => {
   describe('fromArrayCoords', () => {
     it('returns false with wrong parameters', async () => {
       const coordinates01 = Coordinates.fromArrayCoords(null as any);
-      expect(coordinates01).toBe(false);
+      expect(coordinates01.toString()).toEqual('0-0');
 
       const coordinates02 = Coordinates.fromArrayCoords(undefined as any);
-      expect(coordinates02).toBe(false);
+      expect(coordinates02.toString()).toEqual('0-0');
 
       const coordinates03 = Coordinates.fromArrayCoords([] as any);
-      expect(coordinates03).toBe(false);
+      expect(coordinates03.toString()).toEqual('0-0');
 
       const coordinates04 = Coordinates.fromArrayCoords(true as any);
-      expect(coordinates04).toBe(false);
+      expect(coordinates04.toString()).toEqual('0-0');
 
       const coordinates05 = Coordinates.fromArrayCoords(false as any);
-      expect(coordinates05).toBe(false);
+      expect(coordinates05.toString()).toEqual('0-0');
 
       const coordinates06 = Coordinates.fromArrayCoords({} as any);
-      expect(coordinates06).toBe(false);
+      expect(coordinates06.toString()).toEqual('0-0');
 
       const coordinates07 = Coordinates.fromArrayCoords([-3, 6]);
-      expect(coordinates07).toBe(false);
+      expect(coordinates07.toString()).toEqual('0-0');
 
       const coordinates08 = Coordinates.fromArrayCoords([34, -2]);
-      expect(coordinates08).toBe(false);
+      expect(coordinates08.toString()).toEqual('0-0');
 
       const coordinates09 = Coordinates.fromArrayCoords([34.2, 4]);
-      expect(coordinates09).toBe(false);
+      expect(coordinates09.toString()).toEqual('0-0');
 
       const coordinates10 = Coordinates.fromArrayCoords([11, 7.8]);
-      expect(coordinates10).toBe(false);
+      expect(coordinates10.toString()).toEqual('0-0');
 
       const coordinates11 = Coordinates.fromArrayCoords([14]);
-      expect(coordinates11).toBe(false);
+      expect(coordinates11.toString()).toEqual('0-0');
     });
 
     it('returns a correct instance of the Coordinates class', async () => {
       const coordinates01 = Coordinates.fromArrayCoords([0, 0]);
       expect(coordinates01 instanceof Coordinates).toBe(true);
+      expect(coordinates01.getX()).toBe(0);
+      expect(coordinates01.getY()).toBe(0);
 
       const coordinates02 = Coordinates.fromArrayCoords([3, 8]);
       expect(coordinates02 instanceof Coordinates).toBe(true);
-      if (coordinates02 === false) {
-        return;
-      }
       expect(coordinates02.getX()).toBe(3);
       expect(coordinates02.getY()).toBe(8);
       expect(coordinates02.toArr()).toEqual([3, 8]);
@@ -81,59 +80,55 @@ describe('Coordinates', () => {
   describe('fromStringCoords', () => {
     it('returns false with wrong parameters', async () => {
       const coordinates01 = Coordinates.fromStringCoords(null as any);
-      expect(coordinates01).toBe(false);
+      expect(coordinates01.toArr()).toEqual([0, 0]);
 
       const coordinates02 = Coordinates.fromStringCoords(undefined as any);
-      expect(coordinates02).toBe(false);
+      expect(coordinates02.toArr()).toEqual([0, 0]);
 
       const coordinates03 = Coordinates.fromStringCoords([] as any);
-      expect(coordinates03).toBe(false);
+      expect(coordinates03.toArr()).toEqual([0, 0]);
 
       const coordinates04 = Coordinates.fromStringCoords(true as any);
-      expect(coordinates04).toBe(false);
+      expect(coordinates04.toArr()).toEqual([0, 0]);
 
       const coordinates05 = Coordinates.fromStringCoords(false as any);
-      expect(coordinates05).toBe(false);
+      expect(coordinates05.toArr()).toEqual([0, 0]);
 
       const coordinates06 = Coordinates.fromStringCoords({} as any);
-      expect(coordinates06).toBe(false);
+      expect(coordinates06.toArr()).toEqual([0, 0]);
 
       const coordinates07 = Coordinates.fromStringCoords('-3,6', ',');
-      expect(coordinates07).toBe(false);
+      expect(coordinates07.toArr()).toEqual([0, 0]);
 
       const coordinates08 = Coordinates.fromStringCoords('34,-2');
-      expect(coordinates08).toBe(false);
+      expect(coordinates08.toArr()).toEqual([0, 0]);
 
       const coordinates09 = Coordinates.fromStringCoords('34.2, 4', ',');
-      expect(coordinates09).toBe(false);
+      expect(coordinates09.toArr()).toEqual([0, 0]);
 
       const coordinates10 = Coordinates.fromStringCoords('11 - 7.8');
-      expect(coordinates10).toBe(false);
+      expect(coordinates10.toArr()).toEqual([0, 0]);
 
       const coordinates11 = Coordinates.fromStringCoords('11');
-      expect(coordinates11).toBe(false);
+      expect(coordinates11.toArr()).toEqual([0, 0]);
 
       const coordinates12 = Coordinates.fromStringCoords('10-32', [] as any);
-      expect(coordinates12).toBe(false);
+      expect(coordinates12.toArr()).toEqual([0, 0]);
     });
 
     it('returns a correct instance of the Coordinates class', async () => {
       const coordinates01 = Coordinates.fromStringCoords('0-0');
       expect(coordinates01 instanceof Coordinates).toBe(true);
+      expect(coordinates01.getX()).toBe(0);
+      expect(coordinates01.getY()).toBe(0);
 
       const coordinates02 = Coordinates.fromStringCoords('3, 8', ',');
       expect(coordinates02 instanceof Coordinates).toBe(true);
-      if (coordinates02 === false) {
-        return;
-      }
       expect(coordinates02.getX()).toBe(3);
       expect(coordinates02.getY()).toBe(8);
 
       const coordinates03 = Coordinates.fromStringCoords('9 - 15', null as any);
       expect(coordinates03 instanceof Coordinates).toBe(true);
-      if (coordinates03 === false) {
-        return;
-      }
       expect(coordinates03.getX()).toBe(9);
       expect(coordinates03.getY()).toBe(15);
       expect(coordinates03.toArr()).toEqual([9, 15]);
@@ -145,9 +140,6 @@ describe('Coordinates', () => {
     it('set wrong values', async () => {
       const coordinates01 = Coordinates.fromStringCoords('9 - 19', '-');
       expect(coordinates01 instanceof Coordinates).toBe(true);
-      if (coordinates01 === false) {
-        return;
-      }
       expect(coordinates01.getX()).toBe(9);
       expect(coordinates01.getY()).toBe(19);
       const setOutput01 = coordinates01.setX(14.67);
@@ -174,9 +166,6 @@ describe('Coordinates', () => {
     it('set correct values', async () => {
       const coordinates01 = Coordinates.fromStringCoords('15 - 6', '-');
       expect(coordinates01 instanceof Coordinates).toBe(true);
-      if (coordinates01 === false) {
-        return;
-      }
       expect(coordinates01.getX()).toBe(15);
       expect(coordinates01.getY()).toBe(6);
       const setOutput01 = coordinates01.setX('12');

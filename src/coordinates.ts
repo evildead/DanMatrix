@@ -110,13 +110,13 @@ export class Coordinates {
    * Build a Coordinates class instance from string coordinates 'x-y'
    * @param strCoords the stringified coordinates. Ex: '4-7'
    * @param separator the separator of the stringified coordinates. Default '-'
-   * @returns - false if there's any error in the strCoords parameter or the separator
-   * - otherwise it returns an instance of the Coordinates class
+   * @returns - if there's any error in the strCoords parameter or the separator it returns a default Coordinate instance with (0,0)
+   * - otherwise it returns an instance of the Coordinates class with (x,y)
    */
-  public static fromStringCoords(strCoords: string, separator: string = '-'): false | Coordinates {
+  public static fromStringCoords(strCoords: string, separator: string = '-'): Coordinates {
     const coordsArr = Coordinates.stringCoordsToArrCoords(strCoords, separator);
     if (coordsArr === false) {
-      return false;
+      return new Coordinates(0, 0);
     }
     const coordinatesObj = new Coordinates(coordsArr[0], coordsArr[1]);
     return coordinatesObj;
@@ -125,17 +125,17 @@ export class Coordinates {
   /**
    * Build a Coordinates class instance from array coordinates [x,y]
    * @param coordsArr the array of coordinates [x,y]. Ex: [5,1]
-   * @returns - false if there's any error in the coordsArr parameter
-   * - otherwise it returns an instance of the Coordinates class
+   * @returns - if there's any error in the coordsArr parameter it returns a default Coordinate instance with (0,0)
+   * - otherwise it returns an instance of the Coordinates class with (x,y)
    */
-  public static fromArrayCoords(coordsArr: Array<string | number>): false | Coordinates {
+  public static fromArrayCoords(coordsArr: Array<string | number>): Coordinates {
     if (!Array.isArray(coordsArr) || coordsArr.length < 2) {
-      return false;
+      return new Coordinates(0, 0);
     }
     const numX = Coordinates.checkNonNegativeInteger(coordsArr[0]);
     const numY = Coordinates.checkNonNegativeInteger(coordsArr[1]);
     if (numX === false || numY === false) {
-      return false;
+      return new Coordinates(0, 0);
     }
     const coordinatesObj = new Coordinates(numX, numY);
     return coordinatesObj;

@@ -8,7 +8,7 @@
 
 > **DanMatrixConstructorType**\<`T`\> = [`RowsColsFilledWithValType`](../interfaces/RowsColsFilledWithValType.md)\<`T`\> \| `T`[][]
 
-Defined in: [src/commons.ts:41](https://github.com/evildead/DanMatrix/blob/e833fd9e6c016a85584dd018a0e8285b0563b0f7/src/commons.ts#L41)
+Defined in: [src/commons.ts:41](https://github.com/evildead/DanMatrix/blob/6914a6e5cdc61f40ec4a7368792742fdc4fc3096/src/commons.ts#L41)
 
 DanMatrixConstructorType
 

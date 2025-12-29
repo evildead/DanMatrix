@@ -1,7 +1,7 @@
 /* eslint-disable security/detect-object-injection */
 import _ from 'lodash';
 
-import { DanMatrixConstructorType, DanMatrixRowsIterator, DanMatrixColumnsIterator } from '.';
+import { DanMatrixConstructorType, DanMatrixRowsIterator, DanMatrixColumnsIterator, Coordinates } from '.';
 
 /**
  * DanMatrix is a class to handle two-dimension vectors, or matrices
@@ -112,64 +112,33 @@ export class DanMatrix<T> {
 
   /**
    * Get the matrix value at (x, y)
-   * @param x - the x coordinate (index of the rows)
-   * @param y - the y coordinate (index of the columns)
+   * @param coord - the Coordinates instance (x,y) for rows and columns
    * @returns the value at (x, y) or undefined if the coordinates are wrong
    */
-  public get(x: number, y: number): T | undefined {
-    return this._2dvector[x]?.[y];
+  public get(coord: Coordinates): T | undefined {
+    if (!(coord instanceof Coordinates)) {
+      return undefined;
+    }
+    return this._2dvector[coord.getX()]?.[coord.getY()];
   }
 
   /**
    * Set a value at (x, y)
-   * @param x - the x coordinate (index of the rows)
-   * @param y - the y coordinate (index of the columns)
+   * @param coord - the Coordinates instance (x,y) for rows and columns
    * @param val - the value to set
    * @returns the new value set at (x, y) or undefined if the coordinates are wrong
    */
-  public set(x: number, y: number, val: T): T | undefined {
+  public set(coord: Coordinates, val: T): T | undefined {
+    if (!(coord instanceof Coordinates)) {
+      return undefined;
+    }
+    const x = coord.getX();
+    const y = coord.getY();
     if (x >= this._2dvector.length || y >= this._2dvector[x].length) {
       return undefined;
     }
     this._2dvector[x][y] = val;
     return this._2dvector[x][y];
-  }
-
-  /**
-   * Get the matrix value at `coord`
-   * @param coord a string representation of the coordinates
-   * Example: "1-4" represents x:1 and y:4
-   * @param separator the string coordinates separator: by default it's the dash '-'
-   * @returns the value at `coord` or undefined if the string coordinates are wrong
-   */
-  public getCoord(coord: string, separator: string = '-'): T | undefined {
-    if (!_.isString(coord)) {
-      return undefined;
-    }
-    const coords = coord.split(separator).map((elem: string) => Number(elem.trim()));
-    if (coords.length < 2) {
-      return undefined;
-    }
-    return this.get(coords[0], coords[1]);
-  }
-
-  /**
-   * Set a value at `coord`
-   * @param coord a string representation of the coordinates
-   * Example: "1-4" represents x:1 and y:4
-   * @param val - the value to set
-   * @param separator the string coordinates separator: by default it's the dash '-'
-   * @returns the value at `coord` or undefined if the string coordinates are wrong
-   */
-  public setCoord(coord: string, val: T, separator: string = '-'): T | undefined {
-    if (!_.isString(coord)) {
-      return undefined;
-    }
-    const coords = coord.split(separator).map((elem: string) => Number(elem.trim()));
-    if (coords.length < 2) {
-      return undefined;
-    }
-    return this.set(coords[0], coords[1], val);
   }
 
   /**
