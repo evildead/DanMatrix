@@ -1,6 +1,31 @@
 import { Coordinates } from '.';
 
+class SubCoordinates extends Coordinates {
+  constructor(x: number, y: number) {
+    super(x, y);
+  }
+}
+
 describe('Coordinates', () => {
+  describe('protected constructor', () => {
+    it('returns class instance with coordinates 0,0 because the input value is wrong', async () => {
+      const subCoordinatesInstance01 = new SubCoordinates(-5, 8);
+      expect(subCoordinatesInstance01.getX()).toEqual(0);
+      expect(subCoordinatesInstance01.getY()).toEqual(0);
+
+      const subCoordinatesInstance02 = new SubCoordinates(5, -8);
+      expect(subCoordinatesInstance02.getX()).toEqual(0);
+      expect(subCoordinatesInstance02.getY()).toEqual(0);
+
+      const subCoordinatesInstance03 = new SubCoordinates(true as any, [] as any);
+      expect(subCoordinatesInstance03.getX()).toEqual(0);
+      expect(subCoordinatesInstance03.getY()).toEqual(0);
+
+      const subCoordinatesInstance04 = new SubCoordinates(9.54, {} as any);
+      expect(subCoordinatesInstance04.getX()).toEqual(0);
+      expect(subCoordinatesInstance04.getY()).toEqual(0);
+    });
+  });
   describe('fromArrayCoords', () => {
     it('returns false with wrong parameters', async () => {
       const coordinates01 = Coordinates.fromArrayCoords(null as any);
@@ -87,6 +112,9 @@ describe('Coordinates', () => {
 
       const coordinates11 = Coordinates.fromStringCoords('11');
       expect(coordinates11).toBe(false);
+
+      const coordinates12 = Coordinates.fromStringCoords('10-32', [] as any);
+      expect(coordinates12).toBe(false);
     });
 
     it('returns a correct instance of the Coordinates class', async () => {
@@ -195,6 +223,9 @@ describe('Coordinates', () => {
 
       const coordinates11 = Coordinates.arrayCoordsToStringCoords([13]);
       expect(coordinates11).toBe(false);
+
+      const coordinates12 = Coordinates.arrayCoordsToStringCoords([2, 3], [] as any);
+      expect(coordinates12).toBe(false);
     });
 
     it('invoke with correct values', async () => {
@@ -246,6 +277,9 @@ describe('Coordinates', () => {
 
       const coordinates11 = Coordinates.stringCoordsToArrCoords('11');
       expect(coordinates11).toBe(false);
+
+      const coordinates12 = Coordinates.stringCoordsToArrCoords('10-32', [] as any);
+      expect(coordinates12).toBe(false);
     });
 
     it('invoke with correct values', async () => {

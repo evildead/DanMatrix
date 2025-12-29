@@ -1,152 +1,94 @@
-[danmatrix](../README.md) / [Exports](../modules.md) / DanMatrixColumnsIterator
+[**danmatrix**](../README.md)
+
+***
+
+[danmatrix](../README.md) / DanMatrixColumnsIterator
 
 # Class: DanMatrixColumnsIterator\<T\>
 
+Defined in: [src/iterators/danMatrixColumnsIterator.ts:6](https://github.com/evildead/DanMatrix/blob/e833fd9e6c016a85584dd018a0e8285b0563b0f7/src/iterators/danMatrixColumnsIterator.ts#L6)
+
 The class DanMatrixColumnsIterator implements MatrixIterator interface and Iterable interface
 
-## Type parameters
+## Type Parameters
 
-| Name |
-| :------ |
-| `T` |
+### T
+
+`T`
 
 ## Implements
 
 - [`MatrixIterator`](../interfaces/MatrixIterator.md)\<`T`[]\>
-- [`Iterable`](../interfaces/internal_.Iterable.md)\<`T`[]\>
-
-## Table of contents
-
-### Constructors
-
-- [constructor](DanMatrixColumnsIterator.md#constructor)
-
-### Properties
-
-- [\_columnIndex](DanMatrixColumnsIterator.md#_columnindex)
-- [\_matrix](DanMatrixColumnsIterator.md#_matrix)
-
-### Methods
-
-- [[iterator]](DanMatrixColumnsIterator.md#[iterator])
-- [\_initFields](DanMatrixColumnsIterator.md#_initfields)
-- [current](DanMatrixColumnsIterator.md#current)
-- [hasNext](DanMatrixColumnsIterator.md#hasnext)
-- [next](DanMatrixColumnsIterator.md#next)
-- [rewind](DanMatrixColumnsIterator.md#rewind)
+- [`Iterable`](../-internal-/interfaces/Iterable.md)\<`T`[]\>
 
 ## Constructors
 
-### constructor
+### Constructor
 
-• **new DanMatrixColumnsIterator**\<`T`\>(`matrix`): [`DanMatrixColumnsIterator`](DanMatrixColumnsIterator.md)\<`T`\>
+> **new DanMatrixColumnsIterator**\<`T`\>(`matrix`): `DanMatrixColumnsIterator`\<`T`\>
+
+Defined in: [src/iterators/danMatrixColumnsIterator.ts:16](https://github.com/evildead/DanMatrix/blob/e833fd9e6c016a85584dd018a0e8285b0563b0f7/src/iterators/danMatrixColumnsIterator.ts#L16)
 
 The public class constructor
 
-#### Type parameters
-
-| Name |
-| :------ |
-| `T` |
-
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `matrix` | [`DanMatrix`](DanMatrix.md)\<`T`\> | the DanMatrix object |
+##### matrix
+
+[`DanMatrix`](DanMatrix.md)\<`T`\>
+
+the DanMatrix object
 
 #### Returns
 
-[`DanMatrixColumnsIterator`](DanMatrixColumnsIterator.md)\<`T`\>
-
-#### Defined in
-
-[src/iterators/danMatrixColumnsIterator.ts:16](https://github.com/evildead/DanMatrix/blob/f85a2ea/src/iterators/danMatrixColumnsIterator.ts#L16)
-
-## Properties
-
-### \_columnIndex
-
-• `Private` **\_columnIndex**: `number`
-
-#### Defined in
-
-[src/iterators/danMatrixColumnsIterator.ts:10](https://github.com/evildead/DanMatrix/blob/f85a2ea/src/iterators/danMatrixColumnsIterator.ts#L10)
-
-___
-
-### \_matrix
-
-• `Private` **\_matrix**: [`DanMatrix`](DanMatrix.md)\<`T`\>
-
-#### Defined in
-
-[src/iterators/danMatrixColumnsIterator.ts:8](https://github.com/evildead/DanMatrix/blob/f85a2ea/src/iterators/danMatrixColumnsIterator.ts#L8)
+`DanMatrixColumnsIterator`\<`T`\>
 
 ## Methods
 
-### [iterator]
+### \[iterator\]()
 
-▸ **[iterator]**(): [`Iterator`](../interfaces/internal_.Iterator.md)\<`T`[], `any`, `undefined`\>
+> **\[iterator\]**(): [`Iterator`](../-internal-/interfaces/Iterator.md)\<`T`[]\>
+
+Defined in: [src/iterators/danMatrixColumnsIterator.ts:75](https://github.com/evildead/DanMatrix/blob/e833fd9e6c016a85584dd018a0e8285b0563b0f7/src/iterators/danMatrixColumnsIterator.ts#L75)
 
 A zero-argument function that returns an object, conforming to the [Iterator Protocol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_iterator_protocol).
 In Javascript/Typescript in order to be iterable, an object must implement the "@@iterator" method
 
 #### Returns
 
-[`Iterator`](../interfaces/internal_.Iterator.md)\<`T`[], `any`, `undefined`\>
+[`Iterator`](../-internal-/interfaces/Iterator.md)\<`T`[]\>
 
 an iterator object.
 
 #### Implementation of
 
-[Iterable](../interfaces/internal_.Iterable.md).[[iterator]](../interfaces/internal_.Iterable.md#[iterator])
+[`Iterable`](../-internal-/interfaces/Iterable.md).[`[iterator]`](../-internal-/interfaces/Iterable.md#iterator)
 
-#### Defined in
+***
 
-[src/iterators/danMatrixColumnsIterator.ts:75](https://github.com/evildead/DanMatrix/blob/f85a2ea/src/iterators/danMatrixColumnsIterator.ts#L75)
+### current()
 
-___
+> **current**(): `T`[] \| `undefined`
 
-### \_initFields
-
-▸ **_initFields**(): `void`
-
-Init the class fields
-
-#### Returns
-
-`void`
-
-#### Defined in
-
-[src/iterators/danMatrixColumnsIterator.ts:27](https://github.com/evildead/DanMatrix/blob/f85a2ea/src/iterators/danMatrixColumnsIterator.ts#L27)
-
-___
-
-### current
-
-▸ **current**(): `undefined` \| `T`[]
+Defined in: [src/iterators/danMatrixColumnsIterator.ts:35](https://github.com/evildead/DanMatrix/blob/e833fd9e6c016a85584dd018a0e8285b0563b0f7/src/iterators/danMatrixColumnsIterator.ts#L35)
 
 Get the current column, or return undefined if the iterator was not yet started
 
 #### Returns
 
-`undefined` \| `T`[]
+`T`[] \| `undefined`
 
 #### Implementation of
 
-[MatrixIterator](../interfaces/MatrixIterator.md).[current](../interfaces/MatrixIterator.md#current)
+[`MatrixIterator`](../interfaces/MatrixIterator.md).[`current`](../interfaces/MatrixIterator.md#current)
 
-#### Defined in
+***
 
-[src/iterators/danMatrixColumnsIterator.ts:35](https://github.com/evildead/DanMatrix/blob/f85a2ea/src/iterators/danMatrixColumnsIterator.ts#L35)
+### hasNext()
 
-___
+> **hasNext**(): `boolean`
 
-### hasNext
-
-▸ **hasNext**(): `boolean`
+Defined in: [src/iterators/danMatrixColumnsIterator.ts:59](https://github.com/evildead/DanMatrix/blob/e833fd9e6c016a85584dd018a0e8285b0563b0f7/src/iterators/danMatrixColumnsIterator.ts#L59)
 
 Check if the iterator can return more columns
 
@@ -158,37 +100,33 @@ true if the iterator can return more columns, false if there are no columns left
 
 #### Implementation of
 
-[MatrixIterator](../interfaces/MatrixIterator.md).[hasNext](../interfaces/MatrixIterator.md#hasnext)
+[`MatrixIterator`](../interfaces/MatrixIterator.md).[`hasNext`](../interfaces/MatrixIterator.md#hasnext)
 
-#### Defined in
+***
 
-[src/iterators/danMatrixColumnsIterator.ts:59](https://github.com/evildead/DanMatrix/blob/f85a2ea/src/iterators/danMatrixColumnsIterator.ts#L59)
+### next()
 
-___
+> **next**(): `T`[] \| `undefined`
 
-### next
-
-▸ **next**(): `undefined` \| `T`[]
+Defined in: [src/iterators/danMatrixColumnsIterator.ts:47](https://github.com/evildead/DanMatrix/blob/e833fd9e6c016a85584dd018a0e8285b0563b0f7/src/iterators/danMatrixColumnsIterator.ts#L47)
 
 Get the next column, or return undefined if the iterator's end was reached
 
 #### Returns
 
-`undefined` \| `T`[]
+`T`[] \| `undefined`
 
 #### Implementation of
 
-[MatrixIterator](../interfaces/MatrixIterator.md).[next](../interfaces/MatrixIterator.md#next)
+[`MatrixIterator`](../interfaces/MatrixIterator.md).[`next`](../interfaces/MatrixIterator.md#next)
 
-#### Defined in
+***
 
-[src/iterators/danMatrixColumnsIterator.ts:47](https://github.com/evildead/DanMatrix/blob/f85a2ea/src/iterators/danMatrixColumnsIterator.ts#L47)
+### rewind()
 
-___
+> **rewind**(): `void`
 
-### rewind
-
-▸ **rewind**(): `void`
+Defined in: [src/iterators/danMatrixColumnsIterator.ts:66](https://github.com/evildead/DanMatrix/blob/e833fd9e6c016a85584dd018a0e8285b0563b0f7/src/iterators/danMatrixColumnsIterator.ts#L66)
 
 Restart the iterator
 
@@ -198,8 +136,4 @@ Restart the iterator
 
 #### Implementation of
 
-[MatrixIterator](../interfaces/MatrixIterator.md).[rewind](../interfaces/MatrixIterator.md#rewind)
-
-#### Defined in
-
-[src/iterators/danMatrixColumnsIterator.ts:66](https://github.com/evildead/DanMatrix/blob/f85a2ea/src/iterators/danMatrixColumnsIterator.ts#L66)
+[`MatrixIterator`](../interfaces/MatrixIterator.md).[`rewind`](../interfaces/MatrixIterator.md#rewind)
