@@ -6,7 +6,7 @@
 
 # Interface: MatrixIterator\<T\>
 
-Defined in: [src/commons.ts:4](https://github.com/evildead/DanMatrix/blob/6914a6e5cdc61f40ec4a7368792742fdc4fc3096/src/commons.ts#L4)
+Defined in: [src/commons.ts:4](https://github.com/evildead/DanMatrix/blob/d98b5f17f680ab519e3ba1176e8af3f5a112d1fb/src/commons.ts#L4)
 
 The MatrixIterator interface
 
@@ -22,7 +22,7 @@ The MatrixIterator interface
 
 > **current**(): `T` \| `undefined`
 
-Defined in: [src/commons.ts:6](https://github.com/evildead/DanMatrix/blob/6914a6e5cdc61f40ec4a7368792742fdc4fc3096/src/commons.ts#L6)
+Defined in: [src/commons.ts:6](https://github.com/evildead/DanMatrix/blob/d98b5f17f680ab519e3ba1176e8af3f5a112d1fb/src/commons.ts#L6)
 
 #### Returns
 
@@ -34,7 +34,7 @@ Defined in: [src/commons.ts:6](https://github.com/evildead/DanMatrix/blob/6914a6
 
 > **hasNext**(): `boolean`
 
-Defined in: [src/commons.ts:12](https://github.com/evildead/DanMatrix/blob/6914a6e5cdc61f40ec4a7368792742fdc4fc3096/src/commons.ts#L12)
+Defined in: [src/commons.ts:12](https://github.com/evildead/DanMatrix/blob/d98b5f17f680ab519e3ba1176e8af3f5a112d1fb/src/commons.ts#L12)
 
 #### Returns
 
@@ -46,7 +46,7 @@ Defined in: [src/commons.ts:12](https://github.com/evildead/DanMatrix/blob/6914a
 
 > **next**(): `T` \| `undefined`
 
-Defined in: [src/commons.ts:9](https://github.com/evildead/DanMatrix/blob/6914a6e5cdc61f40ec4a7368792742fdc4fc3096/src/commons.ts#L9)
+Defined in: [src/commons.ts:9](https://github.com/evildead/DanMatrix/blob/d98b5f17f680ab519e3ba1176e8af3f5a112d1fb/src/commons.ts#L9)
 
 #### Returns
 
@@ -58,7 +58,7 @@ Defined in: [src/commons.ts:9](https://github.com/evildead/DanMatrix/blob/6914a6
 
 > **rewind**(): `void`
 
-Defined in: [src/commons.ts:15](https://github.com/evildead/DanMatrix/blob/6914a6e5cdc61f40ec4a7368792742fdc4fc3096/src/commons.ts#L15)
+Defined in: [src/commons.ts:15](https://github.com/evildead/DanMatrix/blob/d98b5f17f680ab519e3ba1176e8af3f5a112d1fb/src/commons.ts#L15)
 
 #### Returns
 

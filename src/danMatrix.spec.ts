@@ -5,6 +5,7 @@ describe('Matrix', () => {
     const myMatrix01 = new DanMatrix<number>();
     expect(myMatrix01.rowsNum()).toBe(0);
     expect(myMatrix01.colsNum()).toBe(0);
+    expect(myMatrix01.elementsNum()).toBe(0);
 
     const myMatrix02 = new DanMatrix<number>({
       rows: 2,
@@ -13,6 +14,7 @@ describe('Matrix', () => {
     });
     expect(myMatrix02.rowsNum()).toBe(2);
     expect(myMatrix02.colsNum()).toBe(3);
+    expect(myMatrix02.elementsNum()).toBe(6);
 
     const myMatrix03 = new DanMatrix<number>([
       [763, 23, 87, 123],
@@ -20,6 +22,7 @@ describe('Matrix', () => {
     ]);
     expect(myMatrix03.rowsNum()).toBe(2);
     expect(myMatrix03.colsNum()).toBe(4);
+    expect(myMatrix03.elementsNum()).toBe(8);
   });
 
   it('check the constructor with wrong parameters - should throw exceptions', async () => {
@@ -111,6 +114,7 @@ describe('Matrix', () => {
     });
     expect(myMatrix01.rowsNum()).toBe(2);
     expect(myMatrix01.colsNum()).toBe(3);
+    expect(myMatrix01.elementsNum()).toBe(6);
     expect(myMatrix01.get(Coordinates.fromArrayCoords([1, 2]))).toBe('@');
     expect(myMatrix01.get(Coordinates.fromStringCoords('0-1'))).toBe('@');
     expect(myMatrix01.get(Coordinates.fromArrayCoords([2, 2]))).toBeUndefined();
@@ -121,6 +125,7 @@ describe('Matrix', () => {
     ]);
     expect(myMatrix02.rowsNum()).toBe(2);
     expect(myMatrix02.colsNum()).toBe(4);
+    expect(myMatrix02.elementsNum()).toBe(8);
     expect(myMatrix02.get(Coordinates.fromArrayCoords([1, 2]))).toBe(1);
     expect(myMatrix02.get(Coordinates.fromStringCoords('0-1'))).toBe(23);
     expect(myMatrix02.get([] as any)).toBeUndefined();
@@ -132,6 +137,7 @@ describe('Matrix', () => {
     ]);
     expect(myMatrix03.rowsNum()).toBe(3);
     expect(myMatrix03.colsNum()).toBe(6);
+    expect(myMatrix03.elementsNum()).toBe(18);
     expect(myMatrix03.get(Coordinates.fromArrayCoords([1, 2]))).toBe('bbb');
     expect(myMatrix03.get(Coordinates.fromStringCoords('0-1'))).toBe('aa');
     expect(myMatrix03.get(Coordinates.fromArrayCoords([5, 9]))).toBeUndefined();
@@ -149,9 +155,11 @@ describe('Matrix', () => {
     });
     expect(myMatrix01.rowsNum()).toBe(2);
     expect(myMatrix01.colsNum()).toBe(3);
+    expect(myMatrix01.elementsNum()).toBe(6);
     myMatrix01.addRow(['1', '2', '3']);
     expect(myMatrix01.rowsNum()).toBe(3);
     expect(myMatrix01.colsNum()).toBe(3);
+    expect(myMatrix01.elementsNum()).toBe(9);
     expect(myMatrix01.get(Coordinates.fromArrayCoords([1, 2]))).toBe('@');
     expect(myMatrix01.get(Coordinates.fromStringCoords('0|1', '|'))).toBe('@');
     expect(myMatrix01.get(Coordinates.fromArrayCoords([2, 2]))).toBe('3');
@@ -162,9 +170,11 @@ describe('Matrix', () => {
     ]);
     expect(myMatrix02.rowsNum()).toBe(2);
     expect(myMatrix02.colsNum()).toBe(4);
+    expect(myMatrix02.elementsNum()).toBe(8);
     myMatrix02.addRow([1, 2, 3, 4]);
     expect(myMatrix02.rowsNum()).toBe(3);
     expect(myMatrix02.colsNum()).toBe(4);
+    expect(myMatrix02.elementsNum()).toBe(12);
     expect(myMatrix02.get(Coordinates.fromArrayCoords([1, 2]))).toBe(1);
     expect(myMatrix02.get(Coordinates.fromStringCoords('0-1'))).toBe(23);
     expect(myMatrix02.get(Coordinates.fromArrayCoords([2, 3]))).toBe(4);
@@ -177,10 +187,12 @@ describe('Matrix', () => {
     ]);
     expect(myMatrix03.rowsNum()).toBe(3);
     expect(myMatrix03.colsNum()).toBe(6);
+    expect(myMatrix03.elementsNum()).toBe(18);
     expect(myMatrix03.set(Coordinates.fromArrayCoords([3, 4]), 'DDDDD')).toBeUndefined();
     myMatrix03.addRow(['d', 'dd', 'ddd', 'dddd', 'ddddd', 'dddddd']);
     expect(myMatrix03.rowsNum()).toBe(4);
     expect(myMatrix03.colsNum()).toBe(6);
+    expect(myMatrix03.elementsNum()).toBe(24);
     expect(myMatrix03.get(Coordinates.fromArrayCoords([1, 2]))).toBe('bbb');
     expect(myMatrix03.get(Coordinates.fromStringCoords('0-1'))).toBe('aa');
     expect(myMatrix03.get(Coordinates.fromArrayCoords([5, 9]))).toBeUndefined();
@@ -220,9 +232,11 @@ describe('Matrix', () => {
     });
     expect(myMatrix01.rowsNum()).toBe(2);
     expect(myMatrix01.colsNum()).toBe(3);
+    expect(myMatrix01.elementsNum()).toBe(6);
     myMatrix01.addColumn(['1', '2']);
     expect(myMatrix01.rowsNum()).toBe(2);
     expect(myMatrix01.colsNum()).toBe(4);
+    expect(myMatrix01.elementsNum()).toBe(8);
     console.log(myMatrix01.getMatrixString(4));
     expect(myMatrix01.get(Coordinates.fromArrayCoords([1, 3]))).toBe('2');
     expect(myMatrix01.get(Coordinates.fromStringCoords('0-3'))).toBe('1');
@@ -234,9 +248,11 @@ describe('Matrix', () => {
     ]);
     expect(myMatrix02.rowsNum()).toBe(2);
     expect(myMatrix02.colsNum()).toBe(4);
+    expect(myMatrix02.elementsNum()).toBe(8);
     myMatrix02.addColumn([1111, 2222]);
     expect(myMatrix02.rowsNum()).toBe(2);
     expect(myMatrix02.colsNum()).toBe(5);
+    expect(myMatrix02.elementsNum()).toBe(10);
     console.log(myMatrix02.getMatrixString(8));
     expect(myMatrix02.get(Coordinates.fromArrayCoords([1, 4]))).toBe(2222);
     expect(myMatrix02.get(Coordinates.fromStringCoords('0-4'))).toBe(1111);
@@ -249,9 +265,11 @@ describe('Matrix', () => {
     ]);
     expect(myMatrix03.rowsNum()).toBe(3);
     expect(myMatrix03.colsNum()).toBe(6);
+    expect(myMatrix03.elementsNum()).toBe(18);
     myMatrix03.addColumn(['aaaaaaa', 'bbbbbbb', 'ccccccc']);
     expect(myMatrix03.rowsNum()).toBe(3);
     expect(myMatrix03.colsNum()).toBe(7);
+    expect(myMatrix03.elementsNum()).toBe(21);
     expect(myMatrix03.get(Coordinates.fromArrayCoords([1, 6]))).toBe('bbbbbbb');
     expect(myMatrix03.get(Coordinates.fromStringCoords('2-6'))).toBe('ccccccc');
     console.log(myMatrix03.getMatrixString());
@@ -318,10 +336,12 @@ describe('Matrix', () => {
     });
     expect(myMatrix01.rowsNum()).toBe(2);
     expect(myMatrix01.colsNum()).toBe(3);
+    expect(myMatrix01.elementsNum()).toBe(6);
     const rowToInsert01 = ['1', '2', '3'];
     myMatrix01.insertRowAt(0, rowToInsert01);
     expect(myMatrix01.rowsNum()).toBe(3);
     expect(myMatrix01.colsNum()).toBe(3);
+    expect(myMatrix01.elementsNum()).toBe(9);
     expect(myMatrix01.getRowAt(0)).toEqual(rowToInsert01);
     expect(myMatrix01.get(Coordinates.fromArrayCoords([1, 2]))).toBe('@');
     expect(myMatrix01.get(Coordinates.fromStringCoords('0-1'))).toBe('2');
@@ -333,10 +353,12 @@ describe('Matrix', () => {
     ]);
     expect(myMatrix02.rowsNum()).toBe(2);
     expect(myMatrix02.colsNum()).toBe(4);
+    expect(myMatrix02.elementsNum()).toBe(8);
     const rowToInsert02 = [1, 2, 3, 4];
     myMatrix02.insertRowAt(1, rowToInsert02);
     expect(myMatrix02.rowsNum()).toBe(3);
     expect(myMatrix02.colsNum()).toBe(4);
+    expect(myMatrix02.elementsNum()).toBe(12);
     expect(myMatrix02.getRowAt(1)).toEqual(rowToInsert02);
     expect(myMatrix02.get(Coordinates.fromArrayCoords([1, 2]))).toBe(3);
     expect(myMatrix02.get(Coordinates.fromStringCoords('0-1'))).toBe(23);
@@ -350,11 +372,13 @@ describe('Matrix', () => {
     ]);
     expect(myMatrix03.rowsNum()).toBe(3);
     expect(myMatrix03.colsNum()).toBe(6);
+    expect(myMatrix03.elementsNum()).toBe(18);
     const rowToInsert03 = ['d', 'dd', 'ddd', 'dddd', 'ddddd', 'dddddd'];
     const rowToInsert0302 = ['lrow', 'lrow.', 'lrow..', 'lrow...', 'lrow....', 'lrow.....'];
     myMatrix03.insertRowAt(2, rowToInsert03);
     expect(myMatrix03.rowsNum()).toBe(4);
     expect(myMatrix03.colsNum()).toBe(6);
+    expect(myMatrix03.elementsNum()).toBe(24);
     expect(myMatrix03.getRowAt(2)).toEqual(rowToInsert03);
     expect(myMatrix03.getRowAt(4)).toBeUndefined();
     expect(myMatrix03.getRowAt(30)).toBeUndefined();
@@ -395,10 +419,12 @@ describe('Matrix', () => {
     });
     expect(myMatrix01.rowsNum()).toBe(2);
     expect(myMatrix01.colsNum()).toBe(3);
+    expect(myMatrix01.elementsNum()).toBe(6);
     const columnToInsert01 = ['1', '2'];
     myMatrix01.insertColumnAt(0, columnToInsert01);
     expect(myMatrix01.rowsNum()).toBe(2);
     expect(myMatrix01.colsNum()).toBe(4);
+    expect(myMatrix01.elementsNum()).toBe(8);
     expect(myMatrix01.getColumnAt(0)).toEqual(columnToInsert01);
     expect(myMatrix01.get(Coordinates.fromArrayCoords([1, 0]))).toBe('2');
     expect(myMatrix01.get(Coordinates.fromStringCoords('0-0'))).toBe('1');
@@ -411,10 +437,12 @@ describe('Matrix', () => {
     ]);
     expect(myMatrix02.rowsNum()).toBe(2);
     expect(myMatrix02.colsNum()).toBe(4);
+    expect(myMatrix02.elementsNum()).toBe(8);
     const columnToInsert02 = [1, 2];
     myMatrix02.insertColumnAt(1, columnToInsert02);
     expect(myMatrix02.rowsNum()).toBe(2);
     expect(myMatrix02.colsNum()).toBe(5);
+    expect(myMatrix02.elementsNum()).toBe(10);
     expect(myMatrix02.getColumnAt(1)).toEqual(columnToInsert02);
     expect(myMatrix02.get(Coordinates.fromArrayCoords([1, 1]))).toBe(2);
     expect(myMatrix02.get(Coordinates.fromStringCoords('0-1'))).toBe(1);
@@ -430,10 +458,12 @@ describe('Matrix', () => {
     ]);
     expect(myMatrix03.rowsNum()).toBe(3);
     expect(myMatrix03.colsNum()).toBe(6);
+    expect(myMatrix03.elementsNum()).toBe(18);
     const columnToInsert03 = ['AAAAAAA', 'BBBBBBB', 'CCCCCCC'];
     myMatrix03.insertColumnAt(6, columnToInsert03);
     expect(myMatrix03.rowsNum()).toBe(3);
     expect(myMatrix03.colsNum()).toBe(7);
+    expect(myMatrix03.elementsNum()).toBe(21);
     expect(myMatrix03.getColumnAt(6)).toEqual(columnToInsert03);
     expect(myMatrix03.get(Coordinates.fromArrayCoords([1, 6]))).toBe('BBBBBBB');
     expect(myMatrix03.get(Coordinates.fromStringCoords('2-6'))).toBe('CCCCCCC');
@@ -478,26 +508,32 @@ describe('Matrix', () => {
     ]);
     expect(myMatrix01.rowsNum()).toBe(6);
     expect(myMatrix01.colsNum()).toBe(6);
+    expect(myMatrix01.elementsNum()).toBe(36);
     myMatrix01.removeColumnAt(2);
     expect(myMatrix01.rowsNum()).toBe(6);
     expect(myMatrix01.colsNum()).toBe(5);
+    expect(myMatrix01.elementsNum()).toBe(30);
     myMatrix01.removeRowAt(3);
     expect(myMatrix01.rowsNum()).toBe(5);
     expect(myMatrix01.colsNum()).toBe(5);
+    expect(myMatrix01.elementsNum()).toBe(25);
     console.log(myMatrix01.getMatrixString());
     myMatrix01.removeRowAt(4);
     myMatrix01.removeColumnAt(4);
     expect(myMatrix01.rowsNum()).toBe(4);
     expect(myMatrix01.colsNum()).toBe(4);
+    expect(myMatrix01.elementsNum()).toBe(16);
     console.log(myMatrix01.getMatrixString());
     myMatrix01.removeColumnAt(1);
     myMatrix01.removeRowAt(1);
     expect(myMatrix01.rowsNum()).toBe(3);
     expect(myMatrix01.colsNum()).toBe(3);
+    expect(myMatrix01.elementsNum()).toBe(9);
     myMatrix01.removeColumnAt(0);
     myMatrix01.removeRowAt(0);
     expect(myMatrix01.rowsNum()).toBe(2);
     expect(myMatrix01.colsNum()).toBe(2);
+    expect(myMatrix01.elementsNum()).toBe(4);
     console.log(myMatrix01.getMatrixString());
 
     expect(myMatrix01.removeRowAt(8)).toBe(false);
@@ -581,6 +617,7 @@ describe('Matrix', () => {
     const myMatrix02 = myMatrix01.clone();
     expect(myMatrix01.rowsNum()).toBe(myMatrix02.rowsNum());
     expect(myMatrix01.colsNum()).toBe(myMatrix02.colsNum());
+    expect(myMatrix01.elementsNum()).toBe(myMatrix02.elementsNum());
     for (let rowIndex = 0; rowIndex < myMatrix01.rowsNum(); rowIndex++) {
       expect(myMatrix01.getRowAt(rowIndex)).toEqual(myMatrix02.getRowAt(rowIndex));
     }
@@ -602,7 +639,7 @@ describe('Matrix', () => {
     console.log(myMatrix02.getMatrixString());
   });
 
-  it('check rows and columns iterators', async () => {
+  it('check rows, columns and elements iterators', async () => {
     const myMatrix01 = new DanMatrix<string>([
       ['a', 'aa', 'aaa', 'aaaa', 'aaaaa', 'aaaaaa'],
       ['b', 'bb', 'bbb', 'bbbb', 'bbbbb', 'bbbbbb'],
@@ -625,5 +662,12 @@ describe('Matrix', () => {
       expect(column.length).toEqual(myMatrix01.rowsNum());
     }
     expect(forLoopColumnsIterations).toEqual(myMatrix01.colsNum());
+
+    let forLoopElementsIterations = 0;
+    for (const element of myMatrix01.getElementsIterator()) {
+      ++forLoopElementsIterations;
+      expect(element.val).toEqual(myMatrix01.get(element.coordinates));
+    }
+    expect(forLoopElementsIterations).toEqual(myMatrix01.elementsNum());
   });
 });

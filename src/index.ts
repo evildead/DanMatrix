@@ -1,4 +1,4 @@
-export { DanMatrix } from './danMatrix';
+export { DanMatrix, DanMatrixElement } from './danMatrix';
 export type { MatrixIterator, DanMatrixConstructorType, RowsColsFilledWithValType } from './commons';
-export { DanMatrixRowsIterator, DanMatrixColumnsIterator } from './iterators';
+export { DanMatrixRowsIterator, DanMatrixColumnsIterator, DanMatrixElementsIterator } from './iterators';
 export { Coordinates } from './coordinates';

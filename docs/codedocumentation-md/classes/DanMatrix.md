@@ -6,7 +6,7 @@
 
 # Class: DanMatrix\<T\>
 
-Defined in: [src/danMatrix.ts:10](https://github.com/evildead/DanMatrix/blob/6914a6e5cdc61f40ec4a7368792742fdc4fc3096/src/danMatrix.ts#L10)
+Defined in: [src/danMatrix.ts:22](https://github.com/evildead/DanMatrix/blob/d98b5f17f680ab519e3ba1176e8af3f5a112d1fb/src/danMatrix.ts#L22)
 
 DanMatrix is a class to handle two-dimension vectors, or matrices
 
@@ -24,7 +24,7 @@ is the type of element storable in the matrix
 
 > **new DanMatrix**\<`T`\>(`props?`): `DanMatrix`\<`T`\>
 
-Defined in: [src/danMatrix.ts:24](https://github.com/evildead/DanMatrix/blob/6914a6e5cdc61f40ec4a7368792742fdc4fc3096/src/danMatrix.ts#L24)
+Defined in: [src/danMatrix.ts:36](https://github.com/evildead/DanMatrix/blob/d98b5f17f680ab519e3ba1176e8af3f5a112d1fb/src/danMatrix.ts#L36)
 
 The public constructor of DanMatrix
 
@@ -46,7 +46,7 @@ the optional input of type DanMatrixConstructorType
 
 > **addColumn**(`column`): `boolean`
 
-Defined in: [src/danMatrix.ts:167](https://github.com/evildead/DanMatrix/blob/6914a6e5cdc61f40ec4a7368792742fdc4fc3096/src/danMatrix.ts#L167)
+Defined in: [src/danMatrix.ts:187](https://github.com/evildead/DanMatrix/blob/d98b5f17f680ab519e3ba1176e8af3f5a112d1fb/src/danMatrix.ts#L187)
 
 Add a column to the matrix
 
@@ -74,7 +74,7 @@ Error if a wrong input is passed
 
 > **addRow**(`row`): `boolean`
 
-Defined in: [src/danMatrix.ts:150](https://github.com/evildead/DanMatrix/blob/6914a6e5cdc61f40ec4a7368792742fdc4fc3096/src/danMatrix.ts#L150)
+Defined in: [src/danMatrix.ts:170](https://github.com/evildead/DanMatrix/blob/d98b5f17f680ab519e3ba1176e8af3f5a112d1fb/src/danMatrix.ts#L170)
 
 Add a row to the matrix
 
@@ -102,7 +102,7 @@ Error if a wrong input is passed
 
 > **clone**(): `DanMatrix`\<`T`\>
 
-Defined in: [src/danMatrix.ts:61](https://github.com/evildead/DanMatrix/blob/6914a6e5cdc61f40ec4a7368792742fdc4fc3096/src/danMatrix.ts#L61)
+Defined in: [src/danMatrix.ts:73](https://github.com/evildead/DanMatrix/blob/d98b5f17f680ab519e3ba1176e8af3f5a112d1fb/src/danMatrix.ts#L73)
 
 Clone the current DanMatrix instance
 
@@ -118,7 +118,7 @@ a new DanMatrix instance equal to the current one
 
 > **colsNum**(): `number`
 
-Defined in: [src/danMatrix.ts:106](https://github.com/evildead/DanMatrix/blob/6914a6e5cdc61f40ec4a7368792742fdc4fc3096/src/danMatrix.ts#L106)
+Defined in: [src/danMatrix.ts:118](https://github.com/evildead/DanMatrix/blob/d98b5f17f680ab519e3ba1176e8af3f5a112d1fb/src/danMatrix.ts#L118)
 
 Get the number of columns of the matrix
 
@@ -130,11 +130,27 @@ the number of columns of the matrix
 
 ***
 
+### elementsNum()
+
+> **elementsNum**(): `number`
+
+Defined in: [src/danMatrix.ts:129](https://github.com/evildead/DanMatrix/blob/d98b5f17f680ab519e3ba1176e8af3f5a112d1fb/src/danMatrix.ts#L129)
+
+Get the number of elements of the matrix
+
+#### Returns
+
+`number`
+
+the number of elements of the matrix
+
+***
+
 ### get()
 
 > **get**(`coord`): `T` \| `undefined`
 
-Defined in: [src/danMatrix.ts:118](https://github.com/evildead/DanMatrix/blob/6914a6e5cdc61f40ec4a7368792742fdc4fc3096/src/danMatrix.ts#L118)
+Defined in: [src/danMatrix.ts:138](https://github.com/evildead/DanMatrix/blob/d98b5f17f680ab519e3ba1176e8af3f5a112d1fb/src/danMatrix.ts#L138)
 
 Get the matrix value at (x, y)
 
@@ -158,7 +174,7 @@ the value at (x, y) or undefined if the coordinates are wrong
 
 > **getColumnAt**(`columnIndex`): `T`[] \| `undefined`
 
-Defined in: [src/danMatrix.ts:252](https://github.com/evildead/DanMatrix/blob/6914a6e5cdc61f40ec4a7368792742fdc4fc3096/src/danMatrix.ts#L252)
+Defined in: [src/danMatrix.ts:272](https://github.com/evildead/DanMatrix/blob/d98b5f17f680ab519e3ba1176e8af3f5a112d1fb/src/danMatrix.ts#L272)
 
 Get matrix column at `columnIndex`
 
@@ -186,7 +202,7 @@ Error if a wrong input is passed
 
 > **getColumnsIterator**(): [`DanMatrixColumnsIterator`](DanMatrixColumnsIterator.md)\<`T`\>
 
-Defined in: [src/danMatrix.ts:403](https://github.com/evildead/DanMatrix/blob/6914a6e5cdc61f40ec4a7368792742fdc4fc3096/src/danMatrix.ts#L403)
+Defined in: [src/danMatrix.ts:423](https://github.com/evildead/DanMatrix/blob/d98b5f17f680ab519e3ba1176e8af3f5a112d1fb/src/danMatrix.ts#L423)
 
 Get matrix columns iterator
 
@@ -198,11 +214,27 @@ the matrix columns iterator
 
 ***
 
+### getElementsIterator()
+
+> **getElementsIterator**(): [`DanMatrixElementsIterator`](DanMatrixElementsIterator.md)\<`T`\>
+
+Defined in: [src/danMatrix.ts:431](https://github.com/evildead/DanMatrix/blob/d98b5f17f680ab519e3ba1176e8af3f5a112d1fb/src/danMatrix.ts#L431)
+
+Get matrix elements iterator
+
+#### Returns
+
+[`DanMatrixElementsIterator`](DanMatrixElementsIterator.md)\<`T`\>
+
+the matrix elements iterator
+
+***
+
 ### getMatrixString()
 
 > **getMatrixString**(`fixedSpacing`): `string`
 
-Defined in: [src/danMatrix.ts:71](https://github.com/evildead/DanMatrix/blob/6914a6e5cdc61f40ec4a7368792742fdc4fc3096/src/danMatrix.ts#L71)
+Defined in: [src/danMatrix.ts:83](https://github.com/evildead/DanMatrix/blob/d98b5f17f680ab519e3ba1176e8af3f5a112d1fb/src/danMatrix.ts#L83)
 
 Get a string representation of the current DanMatrix instance
 
@@ -226,7 +258,7 @@ a string representation of the current DanMatrix instance
 
 > **getRowAt**(`rowIndex`): `T`[] \| `undefined`
 
-Defined in: [src/danMatrix.ts:212](https://github.com/evildead/DanMatrix/blob/6914a6e5cdc61f40ec4a7368792742fdc4fc3096/src/danMatrix.ts#L212)
+Defined in: [src/danMatrix.ts:232](https://github.com/evildead/DanMatrix/blob/d98b5f17f680ab519e3ba1176e8af3f5a112d1fb/src/danMatrix.ts#L232)
 
 Get matrix row at `rowIndex`
 
@@ -254,7 +286,7 @@ Error if a wrong input is passed
 
 > **getRowsIterator**(): [`DanMatrixRowsIterator`](DanMatrixRowsIterator.md)\<`T`\>
 
-Defined in: [src/danMatrix.ts:395](https://github.com/evildead/DanMatrix/blob/6914a6e5cdc61f40ec4a7368792742fdc4fc3096/src/danMatrix.ts#L395)
+Defined in: [src/danMatrix.ts:415](https://github.com/evildead/DanMatrix/blob/d98b5f17f680ab519e3ba1176e8af3f5a112d1fb/src/danMatrix.ts#L415)
 
 Get matrix rows iterator
 
@@ -270,7 +302,7 @@ the matrix rows iterator
 
 > **insertColumnAt**(`columnIndex`, `column`): `boolean`
 
-Defined in: [src/danMatrix.ts:273](https://github.com/evildead/DanMatrix/blob/6914a6e5cdc61f40ec4a7368792742fdc4fc3096/src/danMatrix.ts#L273)
+Defined in: [src/danMatrix.ts:293](https://github.com/evildead/DanMatrix/blob/d98b5f17f680ab519e3ba1176e8af3f5a112d1fb/src/danMatrix.ts#L293)
 
 Insert a column at the specific `columnIndex` index
 
@@ -304,7 +336,7 @@ Error if a wrong input is passed
 
 > **insertRowAt**(`rowIndex`, `row`): `boolean`
 
-Defined in: [src/danMatrix.ts:229](https://github.com/evildead/DanMatrix/blob/6914a6e5cdc61f40ec4a7368792742fdc4fc3096/src/danMatrix.ts#L229)
+Defined in: [src/danMatrix.ts:249](https://github.com/evildead/DanMatrix/blob/d98b5f17f680ab519e3ba1176e8af3f5a112d1fb/src/danMatrix.ts#L249)
 
 Insert a row at the specific `rowIndex` index
 
@@ -338,7 +370,7 @@ Error if a wrong input is passed
 
 > **lookForValue**(`val`): `string`[]
 
-Defined in: [src/danMatrix.ts:192](https://github.com/evildead/DanMatrix/blob/6914a6e5cdc61f40ec4a7368792742fdc4fc3096/src/danMatrix.ts#L192)
+Defined in: [src/danMatrix.ts:212](https://github.com/evildead/DanMatrix/blob/d98b5f17f680ab519e3ba1176e8af3f5a112d1fb/src/danMatrix.ts#L212)
 
 Look for a specific value inside the matrix
 
@@ -362,7 +394,7 @@ the value you're looking for
 
 > **removeColumnAt**(`columnIndex`): `boolean`
 
-Defined in: [src/danMatrix.ts:326](https://github.com/evildead/DanMatrix/blob/6914a6e5cdc61f40ec4a7368792742fdc4fc3096/src/danMatrix.ts#L326)
+Defined in: [src/danMatrix.ts:346](https://github.com/evildead/DanMatrix/blob/d98b5f17f680ab519e3ba1176e8af3f5a112d1fb/src/danMatrix.ts#L346)
 
 Remove matrix column at index 'columnIndex'
 
@@ -391,7 +423,7 @@ exception "Error('Wrong input')" when any parameter in input is wrong
 
 > **removeRowAt**(`rowIndex`): `boolean`
 
-Defined in: [src/danMatrix.ts:308](https://github.com/evildead/DanMatrix/blob/6914a6e5cdc61f40ec4a7368792742fdc4fc3096/src/danMatrix.ts#L308)
+Defined in: [src/danMatrix.ts:328](https://github.com/evildead/DanMatrix/blob/d98b5f17f680ab519e3ba1176e8af3f5a112d1fb/src/danMatrix.ts#L328)
 
 Remove matrix row at index 'rowIndex'
 
@@ -420,7 +452,7 @@ exception "Error('Wrong input')" when any parameter in input is wrong
 
 > **replaceColumnAt**(`columnIndex`, `column`): `boolean`
 
-Defined in: [src/danMatrix.ts:375](https://github.com/evildead/DanMatrix/blob/6914a6e5cdc61f40ec4a7368792742fdc4fc3096/src/danMatrix.ts#L375)
+Defined in: [src/danMatrix.ts:395](https://github.com/evildead/DanMatrix/blob/d98b5f17f680ab519e3ba1176e8af3f5a112d1fb/src/danMatrix.ts#L395)
 
 Replace matrix column at index 'columnIndex'
 
@@ -456,7 +488,7 @@ exception "Error('Wrong input')" when any parameter in input is wrong
 
 > **replaceRowAt**(`rowIndex`, `row`): `boolean`
 
-Defined in: [src/danMatrix.ts:349](https://github.com/evildead/DanMatrix/blob/6914a6e5cdc61f40ec4a7368792742fdc4fc3096/src/danMatrix.ts#L349)
+Defined in: [src/danMatrix.ts:369](https://github.com/evildead/DanMatrix/blob/d98b5f17f680ab519e3ba1176e8af3f5a112d1fb/src/danMatrix.ts#L369)
 
 Replace matrix row at index 'rowIndex'
 
@@ -492,7 +524,7 @@ exception "Error('Wrong input')" when any parameter in input is wrong
 
 > **rowsNum**(): `number`
 
-Defined in: [src/danMatrix.ts:98](https://github.com/evildead/DanMatrix/blob/6914a6e5cdc61f40ec4a7368792742fdc4fc3096/src/danMatrix.ts#L98)
+Defined in: [src/danMatrix.ts:110](https://github.com/evildead/DanMatrix/blob/d98b5f17f680ab519e3ba1176e8af3f5a112d1fb/src/danMatrix.ts#L110)
 
 Get the number of rows of the matrix
 
@@ -508,7 +540,7 @@ the number of rows of the matrix
 
 > **set**(`coord`, `val`): `T` \| `undefined`
 
-Defined in: [src/danMatrix.ts:131](https://github.com/evildead/DanMatrix/blob/6914a6e5cdc61f40ec4a7368792742fdc4fc3096/src/danMatrix.ts#L131)
+Defined in: [src/danMatrix.ts:151](https://github.com/evildead/DanMatrix/blob/d98b5f17f680ab519e3ba1176e8af3f5a112d1fb/src/danMatrix.ts#L151)
 
 Set a value at (x, y)
 
@@ -538,7 +570,7 @@ the new value set at (x, y) or undefined if the coordinates are wrong
 
 > **setupMatrix**(`props?`): `void`
 
-Defined in: [src/danMatrix.ts:34](https://github.com/evildead/DanMatrix/blob/6914a6e5cdc61f40ec4a7368792742fdc4fc3096/src/danMatrix.ts#L34)
+Defined in: [src/danMatrix.ts:46](https://github.com/evildead/DanMatrix/blob/d98b5f17f680ab519e3ba1176e8af3f5a112d1fb/src/danMatrix.ts#L46)
 
 The public method to setup the matrix
 

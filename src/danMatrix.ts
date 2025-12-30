@@ -1,7 +1,19 @@
 /* eslint-disable security/detect-object-injection */
 import _ from 'lodash';
 
-import { DanMatrixConstructorType, DanMatrixRowsIterator, DanMatrixColumnsIterator, Coordinates } from '.';
+import {
+  DanMatrixConstructorType,
+  DanMatrixRowsIterator,
+  DanMatrixColumnsIterator,
+  DanMatrixElementsIterator,
+  Coordinates
+} from '.';
+
+export interface DanMatrixElement<T> {
+  danMatrix: DanMatrix<T>;
+  coordinates: Coordinates;
+  val: T;
+}
 
 /**
  * DanMatrix is a class to handle two-dimension vectors, or matrices
@@ -108,6 +120,14 @@ export class DanMatrix<T> {
       return 0;
     }
     return this._2dvector[0].length;
+  }
+
+  /**
+   * Get the number of elements of the matrix
+   * @returns the number of elements of the matrix
+   */
+  public elementsNum(): number {
+    return this.rowsNum() * this.colsNum();
   }
 
   /**
@@ -402,5 +422,13 @@ export class DanMatrix<T> {
    */
   public getColumnsIterator(): DanMatrixColumnsIterator<T> {
     return new DanMatrixColumnsIterator<T>(this);
+  }
+
+  /**
+   * Get matrix elements iterator
+   * @returns {DanMatrixElementsIterator<T>} the matrix elements iterator
+   */
+  public getElementsIterator(): DanMatrixElementsIterator<T> {
+    return new DanMatrixElementsIterator<T>(this);
   }
 }
