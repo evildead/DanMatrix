@@ -1,47 +1,27 @@
-danmatrix / [Exports](modules.md)
+**danmatrix**
 
-# DanMatrix
+***
 
-DanMatrix is a data structure able to handle and manipulate 2D-vectors
+# danmatrix
 
-## How to use it
+## Modules
 
-```ts
-import { DanMatrix } from 'danmatrix';
+- [\<internal\>](-internal-/README.md)
 
-const matrix = new DanMatrix<string>([
-  ['a', 'aa', 'aaa', 'aaaa', 'aaaaa', 'aaaaaa'],
-  ['b', 'bb', 'bbb', 'bbbb', 'bbbbb', 'bbbbbb'],
-  ['c', 'cc', 'ccc', 'cccc', 'ccccc', 'cccccc'],
-  ['d', 'dd', 'ddd', 'dddd', 'ddddd', 'dddddd'],
-  ['e', 'ee', 'eee', 'eeee', 'eeeee', 'eeeeee'],
-  ['f', 'ff', 'fff', 'ffff', 'fffff', 'ffffff']
-]);
+## Classes
 
-matrix.addRow(['g', 'gg', 'ggg', 'gggg', 'ggggg', 'gggggg']);
+- [Coordinates](classes/Coordinates.md)
+- [DanMatrix](classes/DanMatrix.md)
+- [DanMatrixColumnsIterator](classes/DanMatrixColumnsIterator.md)
+- [DanMatrixElementsIterator](classes/DanMatrixElementsIterator.md)
+- [DanMatrixRowsIterator](classes/DanMatrixRowsIterator.md)
 
-matrix.removeColumnAt(1);
+## Interfaces
 
-console.log(matrix.getMatrixString());
-```
+- [DanMatrixElement](interfaces/DanMatrixElement.md)
+- [MatrixIterator](interfaces/MatrixIterator.md)
+- [RowsColsFilledWithValType](interfaces/RowsColsFilledWithValType.md)
 
-## Documentation
+## Type Aliases
 
-- [Code Documentation (Markdown)](./docs/codedocumentation-md/modules.md)
-- [Code Documentation (Html)](https://evildead.github.io/DanMatrix/codedocumentation-html/modules.html)
-- [Test coverage](https://evildead.github.io/DanMatrix/test-coverage/)
-- [Jest-Junit Report](https://evildead.github.io/DanMatrix/test-reports/junit.xml)
-
-## Scripts
-
-### Build project
-
-`npm run build`
-
-### Build documentation
-
-`npm run build:doc`
-
-### Run tests
-
-`npm run test`
+- [DanMatrixConstructorType](type-aliases/DanMatrixConstructorType.md)
