@@ -1,81 +1,65 @@
-[danmatrix](../README.md) / [Exports](../modules.md) / MatrixIterator
+[**danmatrix**](../README.md)
+
+***
+
+[danmatrix](../README.md) / MatrixIterator
 
 # Interface: MatrixIterator\<T\>
 
+Defined in: [src/commons.ts:4](https://github.com/evildead/DanMatrix/blob/8de1fff676e2c7b67370d68bf7545f6ffe47f9fc/src/commons.ts#L4)
+
 The MatrixIterator interface
 
-## Type parameters
+## Type Parameters
 
-| Name |
-| :------ |
-| `T` |
+### T
 
-## Implemented by
-
-- [`DanMatrixColumnsIterator`](../classes/DanMatrixColumnsIterator.md)
-- [`DanMatrixRowsIterator`](../classes/DanMatrixRowsIterator.md)
-
-## Table of contents
-
-### Methods
-
-- [current](MatrixIterator.md#current)
-- [hasNext](MatrixIterator.md#hasnext)
-- [next](MatrixIterator.md#next)
-- [rewind](MatrixIterator.md#rewind)
+`T`
 
 ## Methods
 
-### current
+### current()
 
-▸ **current**(): `undefined` \| `T`
+> **current**(): `T` \| `undefined`
+
+Defined in: [src/commons.ts:6](https://github.com/evildead/DanMatrix/blob/8de1fff676e2c7b67370d68bf7545f6ffe47f9fc/src/commons.ts#L6)
 
 #### Returns
 
-`undefined` \| `T`
+`T` \| `undefined`
 
-#### Defined in
+***
 
-[src/commons.ts:6](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/commons.ts#L6)
+### hasNext()
 
-___
+> **hasNext**(): `boolean`
 
-### hasNext
-
-▸ **hasNext**(): `boolean`
+Defined in: [src/commons.ts:12](https://github.com/evildead/DanMatrix/blob/8de1fff676e2c7b67370d68bf7545f6ffe47f9fc/src/commons.ts#L12)
 
 #### Returns
 
 `boolean`
 
-#### Defined in
+***
 
-[src/commons.ts:12](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/commons.ts#L12)
+### next()
 
-___
+> **next**(): `T` \| `undefined`
 
-### next
-
-▸ **next**(): `undefined` \| `T`
+Defined in: [src/commons.ts:9](https://github.com/evildead/DanMatrix/blob/8de1fff676e2c7b67370d68bf7545f6ffe47f9fc/src/commons.ts#L9)
 
 #### Returns
 
-`undefined` \| `T`
+`T` \| `undefined`
 
-#### Defined in
+***
 
-[src/commons.ts:9](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/commons.ts#L9)
+### rewind()
 
-___
+> **rewind**(): `void`
 
-### rewind
-
-▸ **rewind**(): `void`
+Defined in: [src/commons.ts:15](https://github.com/evildead/DanMatrix/blob/8de1fff676e2c7b67370d68bf7545f6ffe47f9fc/src/commons.ts#L15)
 
 #### Returns
 
 `void`
-
-#### Defined in
-
-[src/commons.ts:15](https://github.com/evildead/DanMatrix/blob/62e2dbc/src/commons.ts#L15)

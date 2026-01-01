@@ -1,7 +1,19 @@
 /* eslint-disable security/detect-object-injection */
 import _ from 'lodash';
 
-import { DanMatrixConstructorType, DanMatrixRowsIterator, DanMatrixColumnsIterator } from '.';
+import {
+  DanMatrixConstructorType,
+  DanMatrixRowsIterator,
+  DanMatrixColumnsIterator,
+  DanMatrixElementsIterator,
+  Coordinates
+} from '.';
+
+export interface DanMatrixElement<T> {
+  danMatrix: DanMatrix<T>;
+  coordinates: Coordinates;
+  val: T;
+}
 
 /**
  * DanMatrix is a class to handle two-dimension vectors, or matrices
@@ -111,63 +123,42 @@ export class DanMatrix<T> {
   }
 
   /**
+   * Get the number of elements of the matrix
+   * @returns the number of elements of the matrix
+   */
+  public elementsNum(): number {
+    return this.rowsNum() * this.colsNum();
+  }
+
+  /**
    * Get the matrix value at (x, y)
-   * @param x - the x coordinate (index of the rows)
-   * @param y - the y coordinate (index of the columns)
+   * @param coord - the Coordinates instance (x,y) for rows and columns
    * @returns the value at (x, y) or undefined if the coordinates are wrong
    */
-  public get(x: number, y: number): T | undefined {
-    return this._2dvector[x]?.[y];
+  public get(coord: Coordinates): T | undefined {
+    if (!(coord instanceof Coordinates)) {
+      return undefined;
+    }
+    return this._2dvector[coord.getX()]?.[coord.getY()];
   }
 
   /**
    * Set a value at (x, y)
-   * @param x - the x coordinate (index of the rows)
-   * @param y - the y coordinate (index of the columns)
+   * @param coord - the Coordinates instance (x,y) for rows and columns
    * @param val - the value to set
    * @returns the new value set at (x, y) or undefined if the coordinates are wrong
    */
-  public set(x: number, y: number, val: T): T | undefined {
+  public set(coord: Coordinates, val: T): T | undefined {
+    if (!(coord instanceof Coordinates)) {
+      return undefined;
+    }
+    const x = coord.getX();
+    const y = coord.getY();
     if (x >= this._2dvector.length || y >= this._2dvector[x].length) {
       return undefined;
     }
     this._2dvector[x][y] = val;
     return this._2dvector[x][y];
-  }
-
-  /**
-   * Get the matrix value at `coord`
-   * @param coord a string representation of the coordinates using the dash '-' as separator.
-   * Example: "1-4" represents x:1 and y:4
-   * @returns the value at `coord` or undefined if the string coordinates are wrong
-   */
-  public getCoord(coord: string): T | undefined {
-    if (!_.isString(coord)) {
-      return undefined;
-    }
-    const coords = coord.split('-').map((elem: string) => Number(elem.trim()));
-    if (coords.length < 2) {
-      return undefined;
-    }
-    return this.get(coords[0], coords[1]);
-  }
-
-  /**
-   * Set a value at `coord`
-   * @param coord a string representation of the coordinates using the dash '-' as separator.
-   * Example: "1-4" represents x:1 and y:4
-   * @param val - the value to set
-   * @returns the value at `coord` or undefined if the string coordinates are wrong
-   */
-  public setCoord(coord: string, val: T): T | undefined {
-    if (!_.isString(coord)) {
-      return undefined;
-    }
-    const coords = coord.split('-').map((elem: string) => Number(elem.trim()));
-    if (coords.length < 2) {
-      return undefined;
-    }
-    return this.set(coords[0], coords[1], val);
   }
 
   /**
@@ -216,20 +207,128 @@ export class DanMatrix<T> {
   /**
    * Look for a specific value inside the matrix
    * @param val - the value you're looking for
-   * @returns - an array of string coordinates where the value was found
+   * @returns - an array of coordinates where the value was found
    */
-  public lookForValue(val: T): Array<string> {
-    const coordsArray: Array<string> = [];
+  public lookForValue(val: T): Array<Coordinates> {
+    const coordsArray: Array<Coordinates> = [];
     for (let rowIndex = 0; rowIndex < this._2dvector.length; rowIndex++) {
       const row = this._2dvector[rowIndex];
       for (let colIndex = 0; colIndex < row.length; colIndex++) {
         const element = row[colIndex];
         if (element === val) {
-          coordsArray.push(`${rowIndex}-${colIndex}`);
+          coordsArray.push(Coordinates.fromArrayCoords([rowIndex, colIndex]));
         }
       }
     }
     return coordsArray;
+  }
+
+  /**
+   * Get all the adjacent elements given a specific coordinate
+   * |  |  |  |
+   * |:---:|:---:|:---:|
+   * | top-left | top | top-right |
+   * | left | **element** | right |
+   * | bottom-left | bottom | bottom-right |
+   * @param coord the coordinates of the element to get the adjacents from
+   * @returns the list of adjacent elements
+   */
+  public getAdjacentElements(coord: Coordinates): Array<DanMatrixElement<T>> | undefined {
+    /*
+     * ┏━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━┓
+     * ┃  top-left   ┃   top   ┃  top-right   ┃
+     * ┣━━━━━━━━━━━━━╋━━━━━━━━━╋━━━━━━━━━━━━━━┫
+     * ┃    left     ┃ element ┃    right     ┃
+     * ┣━━━━━━━━━━━━━╋━━━━━━━━━╋━━━━━━━━━━━━━━┫
+     * ┃ bottom-left ┃ bottom  ┃ bottom-right ┃
+     * ┗━━━━━━━━━━━━━┻━━━━━━━━━┻━━━━━━━━━━━━━━┛
+     */
+
+    const elemVal = this.get(coord);
+    if (elemVal === undefined) {
+      return undefined;
+    }
+    const adjacentElements: Array<DanMatrixElement<T>> = [];
+    const x = coord.getX();
+    const y = coord.getY();
+    let isFirstRow = x === 0;
+    let isLastRow = x === this.rowsNum() - 1;
+    let isLeftmostColumn = y === 0;
+    let isRightmostColumn = y === this.colsNum() - 1;
+
+    // top-left
+    if (!isFirstRow && !isLeftmostColumn) {
+      const topLeftElement: DanMatrixElement<T> = {
+        coordinates: coord,
+        danMatrix: this,
+        val: this.get(Coordinates.fromArrayCoords([x - 1, y - 1])) as T
+      };
+      adjacentElements.push(topLeftElement);
+    }
+    // top
+    if (!isFirstRow) {
+      const topElement: DanMatrixElement<T> = {
+        coordinates: coord,
+        danMatrix: this,
+        val: this.get(Coordinates.fromArrayCoords([x - 1, y])) as T
+      };
+      adjacentElements.push(topElement);
+    }
+    // top-right
+    if (!isFirstRow && !isRightmostColumn) {
+      const topRightElement: DanMatrixElement<T> = {
+        coordinates: coord,
+        danMatrix: this,
+        val: this.get(Coordinates.fromArrayCoords([x - 1, y + 1])) as T
+      };
+      adjacentElements.push(topRightElement);
+    }
+    // left
+    if (!isLeftmostColumn) {
+      const leftElement: DanMatrixElement<T> = {
+        coordinates: coord,
+        danMatrix: this,
+        val: this.get(Coordinates.fromArrayCoords([x, y - 1])) as T
+      };
+      adjacentElements.push(leftElement);
+    }
+    // right
+    if (!isRightmostColumn) {
+      const rightElement: DanMatrixElement<T> = {
+        coordinates: coord,
+        danMatrix: this,
+        val: this.get(Coordinates.fromArrayCoords([x, y + 1])) as T
+      };
+      adjacentElements.push(rightElement);
+    }
+    // bottom-left
+    if (!isLastRow && !isLeftmostColumn) {
+      const bottomLeftElement: DanMatrixElement<T> = {
+        coordinates: coord,
+        danMatrix: this,
+        val: this.get(Coordinates.fromArrayCoords([x + 1, y - 1])) as T
+      };
+      adjacentElements.push(bottomLeftElement);
+    }
+    // bottom
+    if (!isLastRow) {
+      const bottomElement: DanMatrixElement<T> = {
+        coordinates: coord,
+        danMatrix: this,
+        val: this.get(Coordinates.fromArrayCoords([x + 1, y])) as T
+      };
+      adjacentElements.push(bottomElement);
+    }
+    // bottom-right
+    if (!isLastRow && !isRightmostColumn) {
+      const bottomRightElement: DanMatrixElement<T> = {
+        coordinates: coord,
+        danMatrix: this,
+        val: this.get(Coordinates.fromArrayCoords([x + 1, y + 1])) as T
+      };
+      adjacentElements.push(bottomRightElement);
+    }
+    return adjacentElements;
   }
 
   /**
@@ -431,5 +530,13 @@ export class DanMatrix<T> {
    */
   public getColumnsIterator(): DanMatrixColumnsIterator<T> {
     return new DanMatrixColumnsIterator<T>(this);
+  }
+
+  /**
+   * Get matrix elements iterator
+   * @returns {DanMatrixElementsIterator<T>} the matrix elements iterator
+   */
+  public getElementsIterator(): DanMatrixElementsIterator<T> {
+    return new DanMatrixElementsIterator<T>(this);
   }
 }

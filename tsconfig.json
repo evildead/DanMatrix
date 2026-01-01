@@ -2,7 +2,7 @@
   "compileOnSave": true,
   "compilerOptions": {
     "moduleResolution": "node",
-    "target": "es2017",
+    "target": "es2023",
     "module": "CommonJS",
     "noImplicitAny": false,
     "allowJs": true,
