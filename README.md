@@ -44,9 +44,64 @@ console.log(matrix.getMatrixString());
 
 `npm run test`
 
-## Breaking Changes
+## Version 2
 
-### Version *2* from version *1*
+### New Features
+
+#### Coordinates class
+
+```ts
+import { Coordinates } from 'danmatrix';
+
+const coord01 = Coordinates.fromArrayCoords([3, 4]);
+const coord02 = Coordinates.fromStringCoords('2;9', ';');
+console.log(`coord01: ${coord01.toString()}`);
+console.log(`coord02: ${coord02.toString()}`);
+```
+
+#### DanMatrixElementsIterator
+
+```ts
+import { DanMatrix } from 'danmatrix';
+
+const myMatrix01 = new DanMatrix<number>([
+  [7253, 2223, 34587],
+  [21144, 563, 51],
+  [11243, 663, 31],
+  [81144, 2263, 151],
+  [41541, 178, 11],
+  [23141, 1874, 751]
+]);
+for (const element of myMatrix01.getElementsIterator()) {
+  console.log(`Element val: ${element.val}`);
+  console.log(`Element coords: ${element.coordinates.toString()}`);
+}
+```
+
+#### DanMatrix class - getAdjacentElements method
+
+```ts
+import { DanMatrix } from 'danmatrix';
+
+const myMatrix01 = new DanMatrix<number>([
+  [7253, 2223, 34587],
+  [21144, 563, 51],
+  [11243, 663, 31],
+  [81144, 2263, 151],
+  [41541, 178, 11],
+  [23141, 1874, 751]
+]);
+for (const element of myMatrix01.getElementsIterator()) {
+  const adjacents = element.danMatrix.getAdjacentElements(element.coordinates);
+  if (adjacents === undefined) {
+    throw new Error('adjacents was supposed to be a correct object');
+  }
+  console.log(`Element val: ${element.val}`);
+  console.log(`Adjacent vals: ${JSON.stringify(adjacents.map((elem) => { return elem.val; }))}`);
+}
+```
+
+### Breaking Changes
 
 #### DanMatrix class - Modified *get* method
 
@@ -75,3 +130,16 @@ public set(coord: Coordinates, val: T): T | undefined
 #### DanMatrix class - Removed *getCoord* method
 
 #### DanMatrix class - Removed *setCoord* method
+
+#### DanMatrix class - Modified *lookForValue* method
+
+From:
+```ts
+public lookForValue(val: T): Array<string>
+```
+
+To:
+```ts
+public lookForValue(val: T): Array<Coordinates>
+```
+
