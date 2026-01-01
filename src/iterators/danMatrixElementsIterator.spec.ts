@@ -86,4 +86,49 @@ describe('DanMatrixElementsIterator', () => {
       expect(visitedElements).toEqual(myMatrix01.elementsNum());
     }).not.toThrow();
   });
+
+  it('check it iterates through all the elements and retrieve adjacents', async () => {
+    expect(() => {
+      const myMatrix01 = new DanMatrix<number>([
+        [7253, 2223, 34587, 9],
+        [21144, 563, 51, 64],
+        [11243, 663, 31, 923],
+        [81144, 2263, 151, 4],
+        [41541, 178, 11, 83544],
+        [23141, 1874, 751, 3764527]
+      ]);
+      const danMatrixElementsIterator01 = new DanMatrixElementsIterator<number>(myMatrix01);
+      let visitedElements = 0;
+      const setAllAdjacentValues: Set<number> = new Set<number>();
+      while (danMatrixElementsIterator01.hasNext()) {
+        const nextElement = danMatrixElementsIterator01.next();
+        const currElement = danMatrixElementsIterator01.current();
+        if (nextElement === undefined) {
+          throw new Error('Element was supposed to be a number');
+        }
+        expect(nextElement.val).toEqual(myMatrix01.get(nextElement.coordinates));
+        expect(nextElement).toEqual(currElement);
+        if (nextElement !== undefined) {
+          visitedElements++;
+        }
+        const adjacents = nextElement.danMatrix.getAdjacentElements(nextElement.coordinates);
+        if (adjacents === undefined) {
+          throw new Error('Adjacents was supposed to be a valid object');
+        }
+        for (const adjacent of adjacents) {
+          setAllAdjacentValues.add(adjacent.val);
+        }
+      }
+      expect(setAllAdjacentValues.size).toEqual(myMatrix01.elementsNum());
+      expect(visitedElements).toEqual(myMatrix01.elementsNum());
+      expect(danMatrixElementsIterator01.next()).toBeUndefined();
+      danMatrixElementsIterator01.rewind();
+      visitedElements = 0;
+      for (const element of danMatrixElementsIterator01) {
+        expect(element.val).toEqual(myMatrix01.get(element.coordinates));
+        visitedElements++;
+      }
+      expect(visitedElements).toEqual(myMatrix01.elementsNum());
+    }).not.toThrow();
+  });
 });

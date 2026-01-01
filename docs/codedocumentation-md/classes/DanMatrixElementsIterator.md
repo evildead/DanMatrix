@@ -6,7 +6,7 @@
 
 # Class: DanMatrixElementsIterator\<T\>
 
-Defined in: src/iterators/danMatrixElementsIterator.ts:6
+Defined in: [src/iterators/danMatrixElementsIterator.ts:6](https://github.com/evildead/DanMatrix/blob/8de1fff676e2c7b67370d68bf7545f6ffe47f9fc/src/iterators/danMatrixElementsIterator.ts#L6)
 
 The class DanMatrixElementsIterator implements MatrixIterator interface and Iterable interface
 
@@ -27,7 +27,7 @@ The class DanMatrixElementsIterator implements MatrixIterator interface and Iter
 
 > **new DanMatrixElementsIterator**\<`T`\>(`matrix`): `DanMatrixElementsIterator`\<`T`\>
 
-Defined in: src/iterators/danMatrixElementsIterator.ts:20
+Defined in: [src/iterators/danMatrixElementsIterator.ts:20](https://github.com/evildead/DanMatrix/blob/8de1fff676e2c7b67370d68bf7545f6ffe47f9fc/src/iterators/danMatrixElementsIterator.ts#L20)
 
 The public class constructor
 
@@ -49,7 +49,7 @@ the DanMatrix object
 
 > **\[iterator\]**(): [`Iterator`](../-internal-/interfaces/Iterator.md)\<[`DanMatrixElement`](../interfaces/DanMatrixElement.md)\<`T`\>\>
 
-Defined in: src/iterators/danMatrixElementsIterator.ts:99
+Defined in: [src/iterators/danMatrixElementsIterator.ts:99](https://github.com/evildead/DanMatrix/blob/8de1fff676e2c7b67370d68bf7545f6ffe47f9fc/src/iterators/danMatrixElementsIterator.ts#L99)
 
 A zero-argument function that returns an object, conforming to the [Iterator Protocol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_iterator_protocol).
 In Javascript/Typescript in order to be iterable, an object must implement the "@@iterator" method
@@ -70,7 +70,7 @@ an iterator object.
 
 > **current**(): [`DanMatrixElement`](../interfaces/DanMatrixElement.md)\<`T`\> \| `undefined`
 
-Defined in: src/iterators/danMatrixElementsIterator.ts:40
+Defined in: [src/iterators/danMatrixElementsIterator.ts:40](https://github.com/evildead/DanMatrix/blob/8de1fff676e2c7b67370d68bf7545f6ffe47f9fc/src/iterators/danMatrixElementsIterator.ts#L40)
 
 Get the current row, or return undefined if the iterator was not yet started
 
@@ -88,7 +88,7 @@ Get the current row, or return undefined if the iterator was not yet started
 
 > **hasNext**(): `boolean`
 
-Defined in: src/iterators/danMatrixElementsIterator.ts:83
+Defined in: [src/iterators/danMatrixElementsIterator.ts:83](https://github.com/evildead/DanMatrix/blob/8de1fff676e2c7b67370d68bf7545f6ffe47f9fc/src/iterators/danMatrixElementsIterator.ts#L83)
 
 Check if the iterator can return more elements
 
@@ -108,7 +108,7 @@ true if the iterator can return more elements, false if there are no elements le
 
 > **next**(): [`DanMatrixElement`](../interfaces/DanMatrixElement.md)\<`T`\> \| `undefined`
 
-Defined in: src/iterators/danMatrixElementsIterator.ts:62
+Defined in: [src/iterators/danMatrixElementsIterator.ts:62](https://github.com/evildead/DanMatrix/blob/8de1fff676e2c7b67370d68bf7545f6ffe47f9fc/src/iterators/danMatrixElementsIterator.ts#L62)
 
 Get the next element, or return undefined if the iterator's end was reached
 
@@ -126,7 +126,7 @@ Get the next element, or return undefined if the iterator's end was reached
 
 > **rewind**(): `void`
 
-Defined in: src/iterators/danMatrixElementsIterator.ts:90
+Defined in: [src/iterators/danMatrixElementsIterator.ts:90](https://github.com/evildead/DanMatrix/blob/8de1fff676e2c7b67370d68bf7545f6ffe47f9fc/src/iterators/danMatrixElementsIterator.ts#L90)
 
 Restart the iterator
 

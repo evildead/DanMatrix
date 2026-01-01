@@ -6,7 +6,7 @@
 
 # Interface: RowsColsFilledWithValType\<T\>
 
-Defined in: [src/commons.ts:26](https://github.com/evildead/DanMatrix/blob/d98b5f17f680ab519e3ba1176e8af3f5a112d1fb/src/commons.ts#L26)
+Defined in: [src/commons.ts:26](https://github.com/evildead/DanMatrix/blob/8de1fff676e2c7b67370d68bf7545f6ffe47f9fc/src/commons.ts#L26)
 
 The interface RowsColsFilledWithValType
 
@@ -28,7 +28,7 @@ the type of the values which will be stored in the matrix
 
 > **columns**: `number`
 
-Defined in: [src/commons.ts:28](https://github.com/evildead/DanMatrix/blob/d98b5f17f680ab519e3ba1176e8af3f5a112d1fb/src/commons.ts#L28)
+Defined in: [src/commons.ts:28](https://github.com/evildead/DanMatrix/blob/8de1fff676e2c7b67370d68bf7545f6ffe47f9fc/src/commons.ts#L28)
 
 ***
 
@@ -36,7 +36,7 @@ Defined in: [src/commons.ts:28](https://github.com/evildead/DanMatrix/blob/d98b5
 
 > **rows**: `number`
 
-Defined in: [src/commons.ts:27](https://github.com/evildead/DanMatrix/blob/d98b5f17f680ab519e3ba1176e8af3f5a112d1fb/src/commons.ts#L27)
+Defined in: [src/commons.ts:27](https://github.com/evildead/DanMatrix/blob/8de1fff676e2c7b67370d68bf7545f6ffe47f9fc/src/commons.ts#L27)
 
 ***
 
@@ -44,4 +44,4 @@ Defined in: [src/commons.ts:27](https://github.com/evildead/DanMatrix/blob/d98b5
 
 > **val**: `T`
 
-Defined in: [src/commons.ts:29](https://github.com/evildead/DanMatrix/blob/d98b5f17f680ab519e3ba1176e8af3f5a112d1fb/src/commons.ts#L29)
+Defined in: [src/commons.ts:29](https://github.com/evildead/DanMatrix/blob/8de1fff676e2c7b67370d68bf7545f6ffe47f9fc/src/commons.ts#L29)

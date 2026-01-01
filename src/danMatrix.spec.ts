@@ -314,6 +314,7 @@ describe('Matrix', () => {
     ]);
     const coordsArray0201 = myMatrix02.lookForValue(557);
     expect(coordsArray0201.length).toBe(1);
+    expect(coordsArray0201[0].toString()).toEqual('1-3');
     const coordsArray0202 = myMatrix02.lookForValue(1557);
     expect(coordsArray0202.length).toBe(0);
 
@@ -326,6 +327,7 @@ describe('Matrix', () => {
     expect(coordsArray0301.length).toBe(0);
     const coordsArray0302 = myMatrix03.lookForValue('cccc');
     expect(coordsArray0302.length).toBe(1);
+    expect(coordsArray0302[0].toString()).toEqual('2-3');
   });
 
   it('check insertRowAt and getRowAt', async () => {
@@ -669,5 +671,76 @@ describe('Matrix', () => {
       expect(element.val).toEqual(myMatrix01.get(element.coordinates));
     }
     expect(forLoopElementsIterations).toEqual(myMatrix01.elementsNum());
+  });
+
+  it('check getAdjacentElements', async () => {
+    const myMatrix01 = new DanMatrix<string>({
+      rows: 2,
+      columns: 3,
+      val: '@'
+    });
+    const adjacents00 = myMatrix01.getAdjacentElements(Coordinates.fromArrayCoords([0, 0]));
+    if (adjacents00 === undefined) {
+      throw new Error('Adjacents at 0-0 is not supposed to be undefined');
+    }
+    expect(adjacents00.length).toBe(3);
+    for (const adjacentElement of adjacents00) {
+      expect(adjacentElement.val).toEqual('@');
+    }
+    const adjacents01 = myMatrix01.getAdjacentElements(Coordinates.fromArrayCoords([0, 1]));
+    if (adjacents01 === undefined) {
+      throw new Error('Adjacents at 0-1 is not supposed to be undefined');
+    }
+    expect(adjacents01.length).toBe(5);
+    for (const adjacentElement of adjacents01) {
+      expect(adjacentElement.val).toEqual('@');
+    }
+
+    const adjacentsExpectedUndefined = myMatrix01.getAdjacentElements(Coordinates.fromArrayCoords([10, 20]));
+    expect(adjacentsExpectedUndefined).toBeUndefined();
+
+    const myMatrix02 = new DanMatrix<number>([
+      [763, 23, 87, 123],
+      [244, 68563, 1, 557]
+    ]);
+    const adjacents00_1 = myMatrix02.getAdjacentElements(Coordinates.fromArrayCoords([0, 0]));
+    if (adjacents00_1 === undefined) {
+      throw new Error('Adjacents at 0-0 is not supposed to be undefined');
+    }
+    expect(adjacents00_1.length).toBe(3);
+    const adjacents01_1 = myMatrix02.getAdjacentElements(Coordinates.fromArrayCoords([0, 1]));
+    if (adjacents01_1 === undefined) {
+      throw new Error('Adjacents at 0-1 is not supposed to be undefined');
+    }
+    expect(adjacents01_1.length).toBe(5);
+
+    const myMatrix03 = new DanMatrix<string>([
+      ['a', 'aa', 'aaa', 'aaaa', 'aaaaa', 'aaaaaa'],
+      ['b', 'bb', 'bbb', 'bbbb', 'bbbbb', 'bbbbbb'],
+      ['c', 'cc', 'ccc', 'cccc', 'ccccc', 'cccccc']
+    ]);
+    const adjacents00_2 = myMatrix03.getAdjacentElements(Coordinates.fromArrayCoords([0, 0]));
+    if (adjacents00_2 === undefined) {
+      throw new Error('Adjacents at 0-0 is not supposed to be undefined');
+    }
+    expect(adjacents00_2.length).toBe(3);
+    const adjacents13_2 = myMatrix03.getAdjacentElements(Coordinates.fromArrayCoords([1, 3]));
+    if (adjacents13_2 === undefined) {
+      throw new Error('Adjacents at 1-3 is not supposed to be undefined');
+    }
+    expect(adjacents13_2.length).toBe(8);
+    const setAdjacentValues = new Set<string>(
+      adjacents13_2.map((elem) => {
+        return elem.val;
+      })
+    );
+    expect(setAdjacentValues.has('aaa')).toBe(true);
+    expect(setAdjacentValues.has('aaaa')).toBe(true);
+    expect(setAdjacentValues.has('aaaaa')).toBe(true);
+    expect(setAdjacentValues.has('bbb')).toBe(true);
+    expect(setAdjacentValues.has('bbbbb')).toBe(true);
+    expect(setAdjacentValues.has('ccc')).toBe(true);
+    expect(setAdjacentValues.has('cccc')).toBe(true);
+    expect(setAdjacentValues.has('ccccc')).toBe(true);
   });
 });

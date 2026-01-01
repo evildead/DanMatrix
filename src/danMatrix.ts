@@ -207,20 +207,128 @@ export class DanMatrix<T> {
   /**
    * Look for a specific value inside the matrix
    * @param val - the value you're looking for
-   * @returns - an array of string coordinates where the value was found
+   * @returns - an array of coordinates where the value was found
    */
-  public lookForValue(val: T): Array<string> {
-    const coordsArray: Array<string> = [];
+  public lookForValue(val: T): Array<Coordinates> {
+    const coordsArray: Array<Coordinates> = [];
     for (let rowIndex = 0; rowIndex < this._2dvector.length; rowIndex++) {
       const row = this._2dvector[rowIndex];
       for (let colIndex = 0; colIndex < row.length; colIndex++) {
         const element = row[colIndex];
         if (element === val) {
-          coordsArray.push(`${rowIndex}-${colIndex}`);
+          coordsArray.push(Coordinates.fromArrayCoords([rowIndex, colIndex]));
         }
       }
     }
     return coordsArray;
+  }
+
+  /**
+   * Get all the adjacent elements given a specific coordinate
+   * |  |  |  |
+   * |:---:|:---:|:---:|
+   * | top-left | top | top-right |
+   * | left | **element** | right |
+   * | bottom-left | bottom | bottom-right |
+   * @param coord the coordinates of the element to get the adjacents from
+   * @returns the list of adjacent elements
+   */
+  public getAdjacentElements(coord: Coordinates): Array<DanMatrixElement<T>> | undefined {
+    /*
+     * ┏━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━┓
+     * ┃  top-left   ┃   top   ┃  top-right   ┃
+     * ┣━━━━━━━━━━━━━╋━━━━━━━━━╋━━━━━━━━━━━━━━┫
+     * ┃    left     ┃ element ┃    right     ┃
+     * ┣━━━━━━━━━━━━━╋━━━━━━━━━╋━━━━━━━━━━━━━━┫
+     * ┃ bottom-left ┃ bottom  ┃ bottom-right ┃
+     * ┗━━━━━━━━━━━━━┻━━━━━━━━━┻━━━━━━━━━━━━━━┛
+     */
+
+    const elemVal = this.get(coord);
+    if (elemVal === undefined) {
+      return undefined;
+    }
+    const adjacentElements: Array<DanMatrixElement<T>> = [];
+    const x = coord.getX();
+    const y = coord.getY();
+    let isFirstRow = x === 0;
+    let isLastRow = x === this.rowsNum() - 1;
+    let isLeftmostColumn = y === 0;
+    let isRightmostColumn = y === this.colsNum() - 1;
+
+    // top-left
+    if (!isFirstRow && !isLeftmostColumn) {
+      const topLeftElement: DanMatrixElement<T> = {
+        coordinates: coord,
+        danMatrix: this,
+        val: this.get(Coordinates.fromArrayCoords([x - 1, y - 1])) as T
+      };
+      adjacentElements.push(topLeftElement);
+    }
+    // top
+    if (!isFirstRow) {
+      const topElement: DanMatrixElement<T> = {
+        coordinates: coord,
+        danMatrix: this,
+        val: this.get(Coordinates.fromArrayCoords([x - 1, y])) as T
+      };
+      adjacentElements.push(topElement);
+    }
+    // top-right
+    if (!isFirstRow && !isRightmostColumn) {
+      const topRightElement: DanMatrixElement<T> = {
+        coordinates: coord,
+        danMatrix: this,
+        val: this.get(Coordinates.fromArrayCoords([x - 1, y + 1])) as T
+      };
+      adjacentElements.push(topRightElement);
+    }
+    // left
+    if (!isLeftmostColumn) {
+      const leftElement: DanMatrixElement<T> = {
+        coordinates: coord,
+        danMatrix: this,
+        val: this.get(Coordinates.fromArrayCoords([x, y - 1])) as T
+      };
+      adjacentElements.push(leftElement);
+    }
+    // right
+    if (!isRightmostColumn) {
+      const rightElement: DanMatrixElement<T> = {
+        coordinates: coord,
+        danMatrix: this,
+        val: this.get(Coordinates.fromArrayCoords([x, y + 1])) as T
+      };
+      adjacentElements.push(rightElement);
+    }
+    // bottom-left
+    if (!isLastRow && !isLeftmostColumn) {
+      const bottomLeftElement: DanMatrixElement<T> = {
+        coordinates: coord,
+        danMatrix: this,
+        val: this.get(Coordinates.fromArrayCoords([x + 1, y - 1])) as T
+      };
+      adjacentElements.push(bottomLeftElement);
+    }
+    // bottom
+    if (!isLastRow) {
+      const bottomElement: DanMatrixElement<T> = {
+        coordinates: coord,
+        danMatrix: this,
+        val: this.get(Coordinates.fromArrayCoords([x + 1, y])) as T
+      };
+      adjacentElements.push(bottomElement);
+    }
+    // bottom-right
+    if (!isLastRow && !isRightmostColumn) {
+      const bottomRightElement: DanMatrixElement<T> = {
+        coordinates: coord,
+        danMatrix: this,
+        val: this.get(Coordinates.fromArrayCoords([x + 1, y + 1])) as T
+      };
+      adjacentElements.push(bottomRightElement);
+    }
+    return adjacentElements;
   }
 
   /**
